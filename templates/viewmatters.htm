@@ -33,16 +33,16 @@ $(document).ready(function(){
         <div class="well well-mini ">  <div class="input-append" style="margin-bottom:1px !important;">
 		
                    <input type="text" class="input-small" name="cname" id=cname placeholder="Contact Name" style="margin-right:10px;">  &nbsp;&nbsp; 
-                  <select name="calls_callaction" >
-					  <option>Call Action</option>
-					  {% for item in callactions %}
-							<option value="{{item.callaction_pk}}">{{item.callaction_description}}</option>
+                  <select name="matters_mattertype" >
+					  <option>Matter Type</option>
+					  {% for item in mattertype %}
+							<option value="{{item.callaction_pk}}">{{item.mattertype_desc}}</option>
 						  {%endfor%}
 			      </select>&nbsp;&nbsp;
-				  <select name="calls_callsource1" >
-					  <option>Call Source</option>
-					  {% for item in callsource %}
-							<option value="{{item.callsource_pk}}">{{item.callsource_description}}</option>
+				  <select name="matters_billingtype" >
+					  <option>Billing Type</option>
+					  {% for item in billingtype %}
+							<option value="{{item.callsource_pk}}">{{item.billingtype_desc}}</option>
 						  {%endfor%}
 			      </select>
               <button class="btn btn-info" type="submit" id="searchcontacts">Find Matters</button>
@@ -51,7 +51,7 @@ $(document).ready(function(){
          </div>
       </div></form>
        <!--Content Area-->
-      <div class="span10 form-wrapper"> <table class="table table-bordered">
+      <div class="span11 form-wrapper"> <table class="table table-bordered">
           <thead>
             <tr>
               <th>Matter #</th>
@@ -73,7 +73,7 @@ $(document).ready(function(){
 			  <td> {{item.matters_primaryattorney|staffvalues}} </td>
 			  <td> {{item.matters_supportattorney1|staffvalues}} </td>
 			  <td>{{item.matters_mattertype|matterttpeval}}</td>
-			  <td>{{item.matters_billingtype|matterttpeval}}</td>
+			  <td>{{item.matters_billingtype|billingtpeval}}</td>
 			   <td>{{item.matters_caseclosed|date:"F j, Y"}}</td>
 				<td><a href=""><button class="btn btn-mini" type="button">Edit</button></a> <a href="/payadd?mid={{item.contact_pk}}"><button class="btn btn-info" type="button">Add Payment</button></a>{%comment%}<a href="/callactions?cid={{item.calls_pk}}&action=delcallid" onclick="javascript: return confirm('Are you sure you want to delete this item ?');"><button class="btn btn-small btn-danger" type="button">Delete</button></a>{%endcomment%}</td>
             </tr>

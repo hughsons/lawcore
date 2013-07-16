@@ -213,7 +213,10 @@ class ViewMattersClass(LoginRequiredMixin, TemplateView):
     def get(self, request, *args, **kwargs):
         cid = request.GET['cid'] if 'cid' in request.GET else "error"
         allmatters = Tblmatters.objects.all()
-        content = {'page_title': "View Matter", "allitems":allmatters, "cid":cid}
+        mattertype = Tblmattertype.objects.all()
+        billingtype = Tblbillingtype.objects.all()
+        content = {'page_title': "View Matter", "allitems":allmatters, "cid":cid,
+                   "billingtype":billingtype,"mattertype":mattertype}
         return render_template(request, "viewmatters.htm", content)
 
 class SummaryClass(LoginRequiredMixin, TemplateView):

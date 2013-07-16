@@ -107,7 +107,7 @@ def callsources(objid,field=""):
     except Exception as e:
         crm_id = e
         logging.info('LoginfoMessage Contact Value Error:: %s',e)
-    logging.info('LoginfoMessage Contact Result:: %s',result)
+    logging.info('LoginfoMessage Call Source:: %s',result)
     return result
 
 @register.filter("matterttpeval")
@@ -123,5 +123,21 @@ def matterttpeval(objid,field=""):
     except Exception as e:
         crm_id = e
         logging.info('LoginfoMessage Contact Value Error:: %s',e)
-    logging.info('LoginfoMessage Contact Result:: %s',result)
+    logging.info('LoginfoMessage Matter Type:: %s',result)
+    return result
+
+@register.filter("billingtpeval")
+def billingtpeval(objid,field=""):
+    result = ""
+    try:
+        crm_obj = Tblbillingtype.objects.all().filter(billingtype_pk = objid)
+        for crms in crm_obj:
+            if field == "billingtype_desc":
+                result = crms.billingtype_desc
+            else:
+                result = str(crms.billingtype_desc)
+    except Exception as e:
+        crm_id = e
+        logging.info('LoginfoMessage Contact Value Error:: %s',e)
+    logging.info('LoginfoMessage Billing Type:: %s',result)
     return result
