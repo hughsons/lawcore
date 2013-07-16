@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from themelize.me/demos/appstrap1.2/ by HTTrack Website Copier/3.x [XR&CO'2013], Tue, 18 Jun 2013 21:34:41 GMT -->
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<title>AppStrap Bootstrap Theme by Themelize.me</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- @todo: fill with your company info or remove -->
+<meta name="description" content="">
+<meta name="author" content="Themelize.html">
+
+<!-- Bootstrap CSS -->
+<link href="/misc/css/bootstrap.css" rel="stylesheet">
+<link href="/misc/css/responsive.css" rel="stylesheet">
+
+<!-- Flexslider -->
+<link href="/misc/css/flexslider.css" rel="stylesheet">
+
+<!-- Theme style -->
+<link href="/misc/css/theme-style.css" rel="stylesheet">
+
+<!--Your custom colour override-->
+<link href="#" id="colour-scheme" rel="stylesheet">
+
+<!-- Your custom override -->
+<link href="/misc/css/custom-style.css" rel="stylesheet">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="js/html5.js"></script>
+    <![endif]-->
+
+<!-- Le fav and touch icons - @todo: fill with your icons or remove -->
+<link rel="shortcut icon" href="img/icons/favicon.html">
+ </head>
+
+<body class="page page-index">
+<div id="navigation" class="wrapper">
+  <div class="navbar  navbar-static-top"> 
+    
+  
+    
+    <!--Header & Branding region-->
+    <div class="header">
+      <div class="header-inner container">
+        <div class="row-fluid">
+          <div class="span8"> 
+            <!--branding/logo--> 
+            <a class="brand" href="/" title="Home">
+            <h1><span>Law</span>Core<span>.</span></h1>
+            </a>
+            <div class="slogan">LPS Area</div>
+          </div>
+          
+          <!--header rightside-->
+          <div class="span4">
+            
+            
+            <!--social media icons-->
+            <div class="social-media pull-right"> 
+              <!--@todo: replace with company social media details--> 
+              Welcome <span class="fancy"><b>{{request.session.Staff.staff_stafffullname}}</b></span> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="navbar-inner"> 
+        
+        <!--mobile collapse menu button--> 
+        <a class="btn btn-navbar pull-left" data-toggle="collapse" data-target=".nav-collapse"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </a> 
+        
+        <!--user menu-->
+        <ul class="nav user-menu pull-right">
+          <li><a href="/logout" class="btn btn-primary signup">Logout</a></li>
+          {%comment%}<li class="dropdown"> <a href="login.htm" class="btn btn-primary dropdown-toggle login" id="login-drop" data-toggle="dropdown">Login</a>
+            <div class="dropdown-menu" role="menu" aria-labelledby="login-drop">
+              <form action="http://themelize.me/demos/appstrap1.2/login.htm" class="form-inline" id="login-form-drop" role="menuitem">
+                <div class="input-append">
+                  <input type="text" class="input-small email" placeholder="Email">
+                  <input type="password" class="input-small password" placeholder="Password">
+                  <input type="button" class="btn btn-primary login" value="Login">
+                </div>
+              </form>
+              <span class="divider" role="menuitem"></span> <small role="menuitem">Not a member? <a href="#" class="signup">Sign up now!</a></small> <small role="menuitem"><a href="#">Forgotten password?</a></small> </div>
+          </li>
+		  {%endcomment%}
+        </ul>
+        
+        <!--everything within this div is collapsed on mobile-->
+        <div class="nav-collapse collapse"> 
+          
+          <!--main navigation-->
+          <ul class="nav" id="main-menu">
+            <li class="home-link"><a href="/"><i class="icon-home hidden-phone"></i><span class="visible-phone">Home</span></a></li>
+             <li class="dropdown"> <a href="/viewcontacts" class="dropdown-toggle" id="features-drop" data-toggle="dropdown">Call Manager +</a> 
+              <!-- Dropdown Menu -->
+              <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
+                <li role="menuitem"><a href="/viewcontacts" tabindex="-1" class="menu-item">New Call</a></li>
+				<li role="menuitem"><a href="/viewcalls" tabindex="-1" class="menu-item">View Calls</a></li>
+                <li role="menuitem"><a href="/addcontact" tabindex="-1" class="menu-item">New Contact</a></li>
+                <li role="menuitem"><a href="/viewcontacts" tabindex="-1" class="menu-item">View Contacts</a></li>
+				
+              </ul>
+            </li>
+             
+            <li class="dropdown"> <a href="/viewmatters" class="dropdown-toggle" id="about-drop" data-toggle="dropdown">Matter Manager +</a> 
+              <!-- Dropdown Menu -->
+              <ul class="dropdown-menu" role="menu" aria-labelledby="about-drop">
+                
+                <li role="menuitem"><a href="/viewmatters" tabindex="-1" class="menu-item">Find Matters</a></li>
+                <li role="menuitem"><a href="/viewcontacts" tabindex="-1" class="menu-item">Add Matter</a></li>
+				<li role="menuitem"><a href="/viewmatters" tabindex="-1" class="menu-item">Add Payment</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"> <a href="blog.htm" class="dropdown-toggle" id="blog-drop" data-toggle="dropdown">Practice Manager +</a> 
+              <!-- Dropdown Menu -->
+              <ul class="dropdown-menu pull-left" role="menu" aria-labelledby="blog-drop">
+                <li role="menuitem"><a href="blog.htm" tabindex="-1" class="menu-item">Find Matter</a></li>
+                <li role="menuitem"><a href="blog-leftbar.htm" tabindex="-1" class="menu-item">Add Matter</a></li>
+               <li role="menuitem"><a href="/viewcontacts" tabindex="-1" class="menu-item">Search Contacts</a></li>
+				<li role="menuitem"><a href="/viewcalls" tabindex="-1" class="menu-item">View Calls</a></li>
+              </ul>
+            </li>
+            <li class="dropdown"><a href="pages.htm" class="dropdown-toggle" id="pages-drop" data-toggle="dropdown">Accounting Manager +</a> 
+              <!-- Dropdown Menu -->
+              <ul class="dropdown-menu pull-left" role="menu" aria-labelledby="pages-drop">
+                <li role="menuitem"><a href="login.htm" tabindex="-1" class="menu-item">Login</a></li>
+                <li role="menuitem"><a href="signup.htm" tabindex="-1" class="menu-item">Sign Up</a></li>
+                <li role="menuitem"><a href="starter.htm" tabindex="-1" class="menu-item">Starter Snippets</a></li>
+                <li role="menuitem"><a href="index-static.htm" tabindex="-1" class="menu-item">Homepage Static Banner</a></li>
+                <li role="menuitem"><a href="fixed-header.htm" tabindex="-1" class="menu-item">Fixed Header</a></li>
+                <li role="menuitem"><a href="colours.htm" tabindex="-1" class="menu-item">Theme Colours</a></li>
+                <li role="menuitem"><a href="elements.htm" tabindex="-1" class="menu-item">Theme Elements</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+        <!--/.nav-collapse --> 
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+{% include 'base.html' %}
+
+
+{% block content %}
+<section id="container" class="container_12">
+<!-- ======= .grid_12 - block begin ======= -->
+				<section class="grid_12">
+					<div class="box">
+						<div class="title"><span class="icon16_sprite i_network_monitor"></span>View Projects <p style="float:right;"><a href="#createproject">Add Project</a> | <a href=/create_access target=blank>GCS Tokens</a> | <a href=/create_bq_access target=blank>BigQuery Tokens</a></p></div>
+						
+						<div class="inside">
+							 
+								
+								 
+								<table cellpadding="0" cellspacing="0" border="0" class="display" id="datatable_2">
+								<thead>
+									<tr>
+										
+										<th width='100'>Project Name</th>
+										<th width='100'>Project Id</th>
+										
+										<!--<th width='200'>Client ID</th>
+										<th width='200'>Client secret</th>
+										<th width='300'>API Key</th>-->
+										<th width='250'>Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+								{% for item in users %}
+									<tr class="{% cycle 'odd gradeX' 'even gradeC' %}">
+										<td>{{ item.project_name }}</td>
+										<td>{{ item.project_id }}</td>
+										
+										<!--<td>{{ item.project_clientid }}</td>
+										<td>{{ item.project_clientsecret }}</td>
+										<td>{{ item.project_apikey }}</td>-->
+										<td><a href="/createbucketform?pid={{ item.project_id }}">Create Bucket</a> | <a href="/createdatasetform?pid={{ item.project_id }}">Create Dataset</a> | <a href="/editproject?id={{ item.id }}">Edit</a> | <a href="/delproject?id={{ item.id }}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
+									</tr>
+									{% empty %}
+									<em class="formee-req">No Records</em>
+								{% endfor %}
+								</tbody>
+								</table>
+								</div>
+								
+							 
+						 
+						
+					</div>
+				</section>
+				<!-- ======= .grid_12 - block end ======= -->
+				<div class="clear"></div>
+				<!-- ======= .grid_6 - block begin ======= -->
+				<section class="grid_6">
+					<div class="box">
+						<div class="title"><span class="icon16_sprite i_red_cross"></span>Add Project </div>						
+						<div class="inside">
+																
+							<a name="createproject">
+							<!-- formee-->
+							<form id="form_id1" class="formee" action="/addproject" method="POST">
+							{% csrf_token %}
+								<div class="in">
+																		
+									<div class="grid-6-12">
+											<label>Project Id (x-goog-project-id) <em class="formee-req">*</em></label>
+										   <input type="text" name="project_id" id="field1" class="validate[required]" autocomplete="off"/>
+									</div>
+									<div class="clear"></div>
+									<div class="grid-6-12">
+										
+											<label>Project Name: </span><em class="formee-req">*</em></label>
+											<input type="text" name="project_name" class="slider_value" autocomplete="off"/>
+										
+										<div class="clear"></div>
+										<div id="slider-range-min"></div>
+									</div>									
+									<input type="hidden" name="project_apikey" value="" autocomplete="off" />
+									<input type="hidden" name="project_clientid" value="" autocomplete="off" />
+									<input type="hidden" name="project_clientsecret" value="" autocomplete="off" />
+									<!--<div class="grid-12-12">
+										<label>API Key: <em class="formee-req">*</em></label>
+										<input type="text" name="project_apikey" value="" autocomplete="off" />
+									</div><input type="hidden" name="project_apikey" value="" autocomplete="off" />
+									<div class="grid-12-12">
+										<label>Client ID: <em class="formee-req">*</em></label>
+										<input type="text" name="project_clientid" value="" autocomplete="off" />
+									</div>
+									<div class="grid-12-12">
+										<label>Client secret: <em class="formee-req">*</em></label>
+										<input type="text" name="project_clientsecret" value="" autocomplete="off" />
+									</div>-->
+									
+									
+								</div><!-- End .in class -->
+										
+										
+								<!--Form footer begin-->
+								<section class="box_footer">
+									<div class="grid-6-12">
+										<ul class="formee-list">
+											<li><input type="submit" class="right button green" value="Submit form" /></li>
+										</ul>
+									</div>
+									
+									<div class="clear"></div>
+								</section>
+								<!--Form footer end-->
+								
+								
+							</form>
+							<!-- formee-->
+															
+						</div>
+					</div>
+				</section>
+				<!-- ======= .grid_6 - block end ======= -->
+				
+				
+				</section><!-- End of #container -->
+				
+{% endblock %}
+{% include 'footer.html' %}

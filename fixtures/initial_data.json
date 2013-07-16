@@ -1,0 +1,18 @@
+[
+  {
+    "model": "accesstokens",
+     
+    "fields": {
+      "keys_addedby": "admin",
+      "token_type": "gcs"
+    }
+  },
+  {
+    "model": "accesstokens",
+     
+    "fields": {
+      "keys_addedby": "admin",
+      "token_type": "BQ"
+    }
+  }
+]

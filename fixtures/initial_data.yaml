@@ -1,0 +1,4 @@
+- model: bimotics-cs2bq.AccessTokens
+  fields:
+    keys_addedby: John
+    token_type: gcs

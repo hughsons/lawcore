@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+{% load tagsfilter %}
+{% block content %}
+<script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#searchcontacts").click(function(){
+	$("form:has(.placeholder)").live("submit", function(e){
+		  $(this).find(".placeholder").val("");
+		});
+  });
+
+   $("#searchcontacts").click(function(){
+	$("form:has(.placeholder)").live("submit", function(e){
+		  $(this).find(".placeholder").val("");
+		});
+  });
+
+ });
+ </script>
+<div class="container"> 
+<h3 class="title-divider"><span>Add New Contact</span> <small>Provide valid details </small></h3>
+<form  id="AddressForm" name="AddressForm" method="post" action="/callactions">
+{% csrf_token %} <input type=hidden name="action" value="addcontact"><div class="container-fluid">
+     <div class="row-fluid">
+	  
+		<div class="span4 form-wrapper" style="padding:20px !important">
+				<fieldset>
+					<label>Contact Type</label>
+					<select name="contact_type" >
+						   
+						  {% for item in "all"|contacttypes %}
+							<option value="{{item.contact_typepk}}">{{item.contact_typedesc}}</option>
+						  {%endfor%}
+					  </select>  
+					  </label>
+					  <label>First name</label><input type="text" name="contact_firstname" class="controls" />   
+					  <label>Last name</label><input type="text" name="contact_lastname" />  </label>
+					  <label>Email Address</label><input type="text" name="contact_email" />  </label>
+					  <label>Company</label><input type="text" name="contact_company" />  </label>
+					  <label>Telephone</label><input type="text" name="contact_telephone" />  </label>
+					  <label>Address 1</label><input type="text" name="contact_address1" />  </label>
+					  <label>Address 2</label><input type="text" name="contact_address2" />  </label>
+					  <label>City</label><input type="text" name="contact_city" />  </label>
+					  <label>State</label><input type="text" name="contact_state" />  </label>
+					  <label>ZipCode</label><input type="text" name="contact_zip" />  </label>
+					  <label><button type="submit" class="btn">Submit</button>
+				</fieldset>
+			
+		</div>
+		 
+		 
+	</div>
+  </div>     
+  </div>
+  </form>
+{% endblock %}

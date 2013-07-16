@@ -1,0 +1,35 @@
+{% include 'base.html' %}
+
+{% block content %}
+<section id="container" class="container_12">
+<!-- ======= .grid_12 - block begin ======= -->
+				<section class="grid_12">
+					<div class="box">
+						<div class="title"> Response Code </em></div>
+						
+						<div class="inside">
+							<table cellpadding="0" cellspacing="0" border="0" class="display" id="datatable_2">
+								
+								<tbody>
+								{% for item in datasets.items %}
+									<tr class="{% cycle 'odd gradeX' 'even gradeC' %}">
+										<td>{{ item.0 }} </td>
+										<td>{{ item.1 }} </td>
+										
+									</tr>
+									{% empty %}
+									<em class="formee-req">No Records</em>
+								{% endfor %}
+								</tbody>
+								</table>	
+						</div>
+					</div>
+				</section>
+				<!-- ======= .grid_12 - block end ======= -->
+				<div class="clear"></div>
+				
+				
+				</section><!-- End of #container -->
+				
+{% endblock %}
+{% include 'footer.html' %}

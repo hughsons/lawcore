@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+
+{% load tagsfilter %}
+{% block content %}
+
+<script language="javascript" type="text/javascript" src="/misc/js/prettify.js"></script>
+<script language="javascript" type="text/javascript" src="/misc/js/jquerynew.js"></script>
+ <script language="javascript" type="text/javascript" src="/misc/js/bootstrap-datepicker.js"></script>
+ <link href="/misc/css/datepicker.css" rel="stylesheet">
+<script>
+$(function(){
+	window.prettyPrint && prettyPrint();
+   $('#dp2').datepicker({
+				format: 'yyyy-mm-dd'
+			});
+   $('#dp3').datepicker({
+				format: 'yyyy-mm-dd'
+			});
+   $('#dp4').datepicker({
+				format: 'yyyy-mm-dd'
+			});
+});
+ </script>
+<div class="container"> 
+<h3 class="title-divider"><span>Add New Contact</span> <small>Provide valid details </small></h3>
+<form  id="AddressForm" name="AddressForm" method="post" action="/matteractions">
+{% csrf_token %} <input type=hidden name="action" value="addmatter"><input type=hidden name="matters_clientid1" value="{{cid}}">
+<div class="container-fluid">
+     <div class="row-fluid">
+ </div>
+		<div class="span4 form-wrapper" style="padding:20px !important">
+				<fieldset>
+					
+					<label>Matter Id</label><input type="text" name="matters_matterid" class="controls" />  </label>
+					<label>Contact Type</label>
+					<select name="matters_clientid1" >
+						   
+						  {% for item in "all"|contacttypes %}
+							<option value="{{item.contact_typepk}}">{{item.contact_typedesc}}</option>
+						  {%endfor%}
+					  </select>   </label>
+					 <label>Primary Attorney</label>
+					<select name="matters_primaryattorney" >
+						  {% for item in callstaff %}
+							<option value="{{item.staff_pk}}">{{item.staff_stafffullname}}</option>
+						  {%endfor%}
+					  </select>   </label>
+					  <label>Support Attorney</label>
+					<select name="matters_supportattorney1" >
+						  {% for item in callstaff %}
+							<option value="{{item.staff_pk}}">{{item.staff_stafffullname}}</option>
+						  {%endfor%}
+					  </select>   </label>
+					    
+					  <label>Date Opened</label><input type="text" name="matters_dateopened" id="dp2" />   </label>
+					  <label>Date Closed</label><input type="text" name="matters_dateclosed" id="dp3" />  </label>
+					  <label>Case Closed</label><input type="text" name="matters_caseclosed" id="dp4" />  </label>
+					  <label>Matter Type</label>
+					<select name="matters_mattertype" >
+						  {% for item in mattertype %}
+							<option value="{{item.mattertype_pk}}">{{item.mattertype_desc}}</option>
+						  {%endfor%}
+					  </select>   </label>
+					  <label>Billing Type</label>
+					<select name="matters_billingtype" >
+						  {% for item in billingtype %}
+							<option value="{{item.billingtype_pk}}">{{item.billingtype_desc}}</option>
+						  {%endfor%}
+					  </select>   </label>
+					  
+					  <label><button type="submit" class="btn">Submit</button>
+				</fieldset>
+			
+		</div>
+		 
+		 
+	</div>
+  </div>     
+  </div>
+  </form>
+{% endblock %}

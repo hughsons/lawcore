@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+
+{% load tagsfilter %}
+{% block content %}
+<script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#searchcontacts").click(function(){
+	$("form:has(.placeholder)").live("submit", function(e){
+		  $(this).find(".placeholder").val("");
+		});
+  });
+
+   $("#searchcontacts").click(function(){
+	$("form:has(.placeholder)").live("submit", function(e){
+		  $(this).find(".placeholder").val("");
+		});
+  });
+
+ });
+ </script>
+ <style>
+ .dl-horizontal dt {
+    
+    width: 90px !important;
+}
+.dl-horizontal dd {
+    margin-left: 110px;
+}
+</style>
+<div class="container"> 
+<h3 class="title-divider"><span>View Call</span> <small>full contact info below. </small></h3>
+ 
+<div class="container-fluid">
+     <div class="row-fluid">
+	  
+		<div class="span5 form-wrapper" style="padding:20px !important">
+		{% if cid == "error" %}
+		<div class="alert alert-error">
+           
+          <h4>Error!</h4>
+          problem found while fetching contact!!! <a href="/viewcontacts">Search Contacts</a></div>
+		{%else%}
+<blockquote>
+          <p><font  size=3>{{cinfo.contact_firstname}} {{cinfo.contact_lastname}}<br>{{cinfo.contact_email}}<br>{{cinfo.contact_company}}<br>{{cinfo.contact_telephone}} 
+		  <br>{{cinfo.contact_city}}, {{cinfo.contact_state}}, {{cinfo.contact_zip}}</font></p>
+           </blockquote>
+			
+
+<dl class="dl-horizontal">
+            <dt>Call Status</dt>
+            <dd>{%if info.calls_opencall >= 1 %}Open{%else%}Close{%endif%}</dd>
+            
+			<dt>Call For</dt>
+            <dd>&nbsp;{{info.calls_staffid|staffvalues}}</dd>
+			<dt>Call By</dt>
+            <dd>&nbsp;{{info.calls_receptionid|staffvalues}}</dd>
+			<dt>Call Action</dt>
+            <dd>&nbsp;{{info.calls_callactionid|callactions}}</dd>
+			<dt>Telephone</dt>
+            <dd>&nbsp;{{info.contact_telephone}}</dd>
+			<dt>Call Source1</dt>
+            <dd>&nbsp;{{info.calls_callsource1|callsources}}</dd>
+			<dt>Call Source2</dt>
+            <dd>&nbsp;{{info.calls_callsource2|callsources}}</dd>
+			<dt>Call Source3</dt>
+            <dd>&nbsp;{{info.calls_callsource3|callsources}}</dd>
+			 
+            <dd>{{info.calls_message}}</dd>
+			
+          </dl>
+				 
+			{%endif%}
+		</div>
+		 
+		 
+	</div>
+  </div>     
+  </div>
+  </form>
+{% endblock %}

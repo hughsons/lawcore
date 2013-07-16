@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% load tagsfilter %}
+{% block content %}
+<script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#searchcontacts").click(function(){
+	$("form:has(.placeholder)").live("submit", function(e){
+		  $(this).find(".placeholder").val("");
+		});
+  });
+
+   $("#searchcontacts").click(function(){
+	$("form:has(.placeholder)").live("submit", function(e){
+		  $(this).find(".placeholder").val("");
+		});
+  });
+
+ });
+ </script>
+<div class="container"> 
+<h3 class="title-divider"><span>View Contact</span> <small>full contact info below. </small></h3>
+ 
+<div class="container-fluid">
+     <div class="row-fluid">
+	  
+		<div class="span5 form-wrapper" style="padding:20px !important">
+		{% if cid == "error" %}
+		<div class="alert alert-error">
+           
+          <h4>Error!</h4>
+          problem found while fetching contact!!! <a href="/viewcontacts">Search Contacts</a></div>
+		{%else%}
+			<dl class="dl-horizontal">
+            <dt>Name</dt>
+            <dd>{{info.contact_firstname}} {{info.contact_lastname}}</dd>
+            
+			<dt>Email Address</dt>
+            <dd>{{info.contact_email}}</dd>
+			<dt>Company</dt>
+            <dd>{{info.contact_company}}</dd>
+			<dt>Telephone</dt>
+            <dd>{{info.contact_telephone}}</dd>
+			<dt>Contact Type</dt>
+            <dd>{{info.contact_pk|contacttypes}}</dd>
+			<dt>Address 1</dt>
+            <dd>{{info.contact_address1}}</dd>
+			<dt>Address 2</dt>
+            <dd>{{info.contact_address2}}</dd>
+			<dt>Location</dt>
+            <dd>{{info.contact_city}}, {{info.contact_state}}, {{info.contact_zip}}</dd>
+          </dl>
+				 
+			{%endif%}
+		</div>
+		 
+		 
+	</div>
+  </div>     
+  </div>
+  </form>
+{% endblock %}

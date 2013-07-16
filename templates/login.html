@@ -1,0 +1,57 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>{{ page_title }}</title><link rel="stylesheet" type="text/css" href="/misc/css/reset.css" />
+  <!-- Bootstrap CSS -->
+<link href="/misc/css/bootstrap.css" rel="stylesheet">
+<link href="/misc/css/responsive.css" rel="stylesheet">
+
+<!-- Flexslider -->
+<link href="/misc/css/flexslider.css" rel="stylesheet">
+
+<!-- Theme style -->
+<link href="/misc/css/theme-style.css" rel="stylesheet">
+
+<!--Your custom colour override-->
+<link href="#" id="colour-scheme" rel="stylesheet">
+
+<!-- Your custom override -->
+<link href="/misc/css/custom-style.css" rel="stylesheet">
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="js/html5.js"></script>
+    <![endif]-->
+<link href="/misc/css/login.css" rel="stylesheet" type="text/css"/>
+ <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+        <script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/js/bootstrap.min.js"></script>
+        <script src="http://ajax.aspnetcdn.com/ajax/jquery.dataTables/1.9.4/jquery.dataTables.min.js"></script>
+ 	 
+
+<div class="container">
+	<div class="row">
+		<div class="span4 offset4 well">
+			<legend>Please Sign In</legend>
+          	
+			{% if error_message1 %}
+			<div class="alert alert-error">
+		<a class="close" data-dismiss="alert" href="#">*</a>Incorrect Username or Password!
+		 </div>
+		{% endif %}
+                
+           
+			<form method="POST" action="/login/" accept-charset="UTF-8" class="form-login form-wrapper form-medium">
+			{{form.email}}
+			 
+            <label class="checkbox">
+            	<input type="checkbox" name="remember" value="1"> Remember Me
+            </label>
+			<button type="submit" name="submit" class="btn btn-info btn-block">Sign in</button>
+			</form>    
+		</div>
+	</div>
+
+
+</div>

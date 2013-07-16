@@ -1,0 +1,38 @@
+{% include 'base.html' %}
+<script  type="text/javascript" src="/misc/js2/jquery-1.7.2.min.js"></script> 
+<script type="text/javascript"> 
+ $(document).ready(function() {
+	 $('#projectschange').change(function() {
+		 var conceptName = $('#projectschange').find(":selected").val();
+		$.get('/fetchdatasets?bid='+conceptName+'', function(data) {
+		  $('#result').html(data);
+		});
+	});
+});
+</script>
+ 
+{% block content %}
+<section id="container" class="container_12">
+<!-- ======= .grid_12 - block begin ======= -->
+				<section class="grid_12">
+					<div class="box">
+						<div class="title"><form> Select Project<select id="projectschange"  >
+						 <option> -- Select Project -- </option>
+						{% for item in users %}
+						<option value="{{ item.project_id }}"> {{ item.project_name }} </option>
+						{% endfor %}
+						</select> </form></div>
+						
+						<div class="inside">
+							<div id="result">Please Select A project from above.</div>
+						</div>
+					</div>
+				</section>
+				<!-- ======= .grid_12 - block end ======= -->
+				<div class="clear"></div>
+				
+				
+				</section><!-- End of #container -->
+				
+{% endblock %}
+{% include 'footer.html' %}

@@ -1,0 +1,10 @@
+ALTER TABLE `tblcontact`  CHANGE COLUMN `Contact_Type` `Contact_AddedBy` int(10) NULL DEFAULT NULL;
+ALTER TABLE  `tblcontact`  ADD COLUMN `Contact_AddedBy` int(11) NULL DEFAULT NULL;
+ALTER TABLE `tblcalls`  ADD COLUMN `addedby` int(11) NULL DEFAULT NULL;
+ALTER TABLE `tblcalls`  CHANGE COLUMN `Calls_CallActive` `Calls_CallActive` int(1) NOT NULL DEFAULT 0;
+
+ALTER TABLE `tblcalls`  CHANGE COLUMN `Calls_OpenCall` `Calls_OpenCall` int(2) NULL DEFAULT NULL;
+
+ALTER TABLE `lawcore`.`tblmatters`  CHANGE COLUMN `Matters_Active` `Matters_Active` int(11) NULL DEFAULT NULL;
+
+ALTER TABLE `lawcore`.`tblmatters`  ADD COLUMN `Matters_datecreated` varchar(255) NULL DEFAULT NULL;

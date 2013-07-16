@@ -1,0 +1,113 @@
+{% extends 'base.html' %}
+
+{% load tagsfilter %}
+{% block content %}
+<script language="javascript" type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script language="javascript" type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("#searchcontacts").click(function(){
+	$("form:has(.placeholder)").live("submit", function(e){
+		  $(this).find(".placeholder").val("");
+		});
+  });
+
+   $("#searchcontacts").click(function(){
+	$("form:has(.placeholder)").live("submit", function(e){
+		  $(this).find(".placeholder").val("");
+		});
+  });
+
+ });
+ </script>
+<div class="container"> 
+<h3 class="title-divider"><span>Add New Call</span> <small>Provide valid details </small></h3>
+<form  id="AddressForm" name="AddressForm" method="post" action="/callactions">
+{% csrf_token %} <input type=hidden name="action" value="addnewcall">
+<input type=hidden name="calls_contactid" value="{{cid}}"><div class="container-fluid">
+     <div class="row-fluid">
+	  
+		<div class="span4 form-wrapper" style="padding:20px !important">
+		{% if cid == "error" %}
+		<div class="alert alert-error">
+          <button data-dismiss="alert" class="close" type="button">*</button>
+          <h4>Error!</h4>
+          problem found while fetching contact!!! <a href="/viewcontacts">Search Contacts</a></div>
+		{%else%}
+		 <b class="role">Contact Name</b> 
+				<fieldset>
+					<label>Call Type</label>
+					<select name="calls_calltypeid" >
+						   
+						  {% for item in calltypes %}
+							<option value="{{item.calltype_pk}}">{{item.calltype_description}}</option>
+						  {%endfor%}
+					  </select>  
+					  </label>
+					  <label>Call Action</label>
+						<select name="calls_callactionid" >
+						   
+						  {% for item in callactions %}
+							<option value="{{item.callaction_pk}}">{{item.callaction_description}}</option>
+						  {%endfor%}
+					  </select>  
+					  </label>
+					    
+					  <label>Call Message<br><textarea name="calls_message" /> </textarea> </label>
+					 <label>Call For</label>
+						<select name="calls_staffid" >
+						   
+						  {% for item in callstaff %}
+							<option value="{{item.staff_pk}}">{{item.staff_stafffullname}}</option>
+						  {%endfor%}
+					  </select>  
+					  </label>
+					  <label>Call By</label>
+						<select name="calls_receptionid" >
+						   
+						  {% for item in callstaff %}
+							<option value="{{item.staff_pk}}">{{item.staff_stafffullname}}</option>
+						  {%endfor%}
+					  </select>  
+					  </label>
+					  <label>Call Source1</label>
+						<select name="calls_callsource1" >
+						   
+						  {% for item in callsource %}
+							<option value="{{item.callsource_pk}}">{{item.callsource_description}}</option>
+						  {%endfor%}
+					  </select>  
+					  </label>
+					  <label>Call Source2</label>
+						<select name="calls_callsource2" >
+						   
+						  {% for item in callsource %}
+							<option value="{{item.callsource_pk}}">{{item.callsource_description}}</option>
+						  {%endfor%}
+					  </select>  
+					  </label>
+					  <label>Call Source3</label>
+						<select name="calls_callsource3" >
+						   
+						  {% for item in callsource %}
+							<option value="{{item.callsource_pk}}">{{item.callsource_description}}</option>
+						  {%endfor%}
+					  </select>  
+					  </label>
+					  <label>Call Active</label>
+						<select name="calls_callactive" >
+							<option value=1>Active</option>
+							<option value=0>In-Active</option>
+					  </select>  
+					  </label>
+					  <label><button type="submit" class="btn">Submit</button>
+				</fieldset>
+			{%endif%}
+		</div>
+		 
+		 
+	</div>
+  </div>     
+  </div>
+  </form>
+{% endblock %}

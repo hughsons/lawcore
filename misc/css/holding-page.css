@@ -1,0 +1,66 @@
+/**
+ * themelize.me holding page style
+ */
+/**
+ * Common elements for all pages, this is included in all pages
+ * Used to call in other elements, mixins etc
+ */
+/*---------------------------------------------------
+    LESS Elements 0.6
+  ---------------------------------------------------
+    A set of useful LESS mixins by Dmitry Fadeyev
+    Special thanks for mixin suggestions to:
+      Kris Van Herzeele,
+      Benoit Adam,
+      Portenart Emile-Victor,
+      Ryan Faerman
+
+    More info at: http://lesselements.com
+-----------------------------------------------------*/
+html {
+  background: #eee;
+}
+body {
+  background: #EEE;
+  background: #e3dfdd;
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eeeeee), color-stop(1, #e3dfdd));
+  background: -ms-linear-gradient(bottom, #eeeeee, #e3dfdd);
+  background: -moz-linear-gradient(center bottom, #eeeeee 0%, #e3dfdd 100%);
+}
+/**
+ * Bootstraps overrides
+ */
+.hero-unit {
+  background-color: transparent;
+  text-align: center;
+  padding: 8% 0 0 0;
+}
+.hero-unit .row {
+  margin-bottom: 1.4em;
+}
+.hero-unit .lead {
+  font-size: 21px;
+  margin-top: -30px;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+.hero-unit .icon-envelope-alt {
+  font-size: 14px;
+}
+.hero-unit .icon-twitter, .hero-unit .icon-facebook {
+  font-size: 18px;
+}
+/**
+ * Mailchimp form
+ */
+#mc_embed_signup form {
+  paddding: 0;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+}
+#mc_embed_signup p {
+  font-size: 12px;
+  line-height: 1;
+  margin: 0 0 2px 0;
+}

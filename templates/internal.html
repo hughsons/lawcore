@@ -1,0 +1,42 @@
+
+
+
+{% block content %}
+
+				
+						
+						 
+							 
+								
+								 
+								<table cellpadding="0" cellspacing="0" border="0" class="display" id="datatable_2">
+								<thead>
+									<tr>
+										
+										<th width='100'>Bucket Name</th>
+										
+										<th width='70'>Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+								{% for item in herenow %}
+									<tr class="{% cycle 'odd gradeX' 'even gradeC' %}">
+										<td>{{ item }}</td>
+										
+										<td><a href="/viewfiles?buckname={{ item }}">View Files</a> | <a href="/editproject?id={{ item.id }}">Edit</a> | <a href="/delproject?id={{ item.id }}" onclick="return confirm('Are you sure you want to delete?')">Delete</a></td>
+									</tr>
+									{% empty %}
+									<em class="formee-req">No Records</em>
+								{% endfor %}
+								</tbody>
+								</table>
+								
+
+								
+							 
+						 
+						
+				
+		
+				
+{% endblock %}

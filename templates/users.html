@@ -1,0 +1,117 @@
+{% include 'base.html' %}
+
+
+{% block content %}
+<section id="container" class="container_12">
+				<!-- ======= .grid_6 - block begin ======= -->
+				<section class="grid_6">
+					<div class="box">
+						<div class="title"><span class="icon16_sprite i_group"></span>View Users</div>
+						
+						<div class="inside">
+							 
+								
+								 
+								<table cellpadding="0" cellspacing="0" border="0" class="display" id="datatable_2">
+								<thead>
+									<tr>
+										<th width='100'>Username</th>
+										<th>Email</th>
+										<th>Full Name</th>
+										<th>Actions</th>
+									</tr>
+								</thead>
+								<tbody>
+								{% for item in users %}
+									<tr>
+										<td>{{ item.username }}</td>
+										<td>{{ item.email }}</td>
+										<td>{{ item.get_full_name }}</td>
+										<td><a href="/edituser?id={{ item.id }}">Edit</a> | <a href="/deluser?userid={{ item.id }}" onclick="return confirm('Are you sure?')">Delete</a></td>
+									</tr>
+									{% empty %}
+									No Users
+								{% endfor %}
+								</tbody>
+								</table>
+								 
+								<div class="clear"></div>
+								
+							 
+						</div>
+						
+					</div>
+				</section>
+				<!-- ======= .grid_6 - block end ======= -->
+				<!-- ======= .grid_6 - block begin ======= -->
+				<section class="grid_6">
+					<div class="box">
+						<div class="title"><span class="icon16_sprite i_red_cross"></span>Add User</div>						
+						<div class="inside">
+																
+							
+							<!-- formee-->
+							<form id="form_id1" class="formee" action="/adduser" method="POST">
+							{% csrf_token %}
+								<div class="in">
+																		
+									<div class="grid-6-12">
+											<label>Username <em class="formee-req">*</em></label>
+										   <input type="text" name="username" id="field1" class="validate[required]" autocomplete="off"/>
+									</div>
+									<div class="clear"></div>
+									<div class="grid-6-12">
+										
+											<span class="slider_label">Password: </span><em class="formee-req">*</em>
+											<input type="password" name="password1" class="slider_value" autocomplete="off"/>
+										
+										<div class="clear"></div>
+										<div id="slider-range-min"></div>
+									</div>									
+									
+									
+									<div class="grid-12-12">
+										<label>Email Address: <em class="formee-req">*</em></label>
+										<input type="text" name="email" value="" autocomplete="off" />
+									</div>
+									<div class="clear"></div>
+									<div class="grid-6-12">
+										<label>First Name: </label>
+										<input type="text" name="first_name" autocomplete="off">
+									</div>
+									
+									<div class="grid-6-12">
+										<label>Last Name: </label>
+										<input type="text" name="last_name" autocomplete="off">
+									</div>
+									<div class="clear"></div>
+									
+								</div><!-- End .in class -->
+										
+										
+								<!--Form footer begin-->
+								<section class="box_footer">
+									<div class="grid-6-12">
+										<ul class="formee-list">
+											<li><input type="submit" class="right button green" value="Submit form" /></li>
+										</ul>
+									</div>
+									
+									<div class="clear"></div>
+								</section>
+								<!--Form footer end-->
+								
+								
+							</form>
+							<!-- formee-->
+															
+						</div>
+					</div>
+				</section>
+				<!-- ======= .grid_6 - block end ======= -->
+				
+				
+				</section><!-- End of #container -->
+				
+{% endblock %}
+{% include 'footer.html' %}

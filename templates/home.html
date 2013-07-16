@@ -1,0 +1,68 @@
+{% include 'base.html' %}
+
+
+{% block content %}
+<section id="container" class="container_12">
+				
+				
+				<!-- ======= .grid_12 - block begin ======= -->
+				<section class="grid_12">
+					<div class="box">
+						<div class="title"><span class="icon16_sprite i_network_monitor"></span>Quick Reports</div>
+						
+						<div class="inside">
+							<div class="in">
+								
+								<div id="graph_show_home1" style="width: 48%; height: 200px;" align=center>
+								<table cellpadding="0" cellspacing="0" border="0" class="display" id="datatable_2">
+								
+								<tbody>
+									<tr class="odd gradeX">
+										<td>Total no.of Projects</td>
+										<td><a href=/settings>{{ totalprojects }}</a></td>
+									</tr>
+									
+									
+									<tr class="odd gradeC">
+										<td>Total no.of Cron Jobs</td>
+										<td><a href=/listcronjobs>{{ totalcrons }}</a></td>
+									</tr>
+									<tr class="odd gradeX">
+										<td>Total no.of files</td>
+										<td>{{ totalfiles }}</td>
+									</tr>
+									<tr class="odd gradeC">
+										<td>Total no.of files in queue</td>
+										<td>{{ totalfilespending }}</td>
+									</tr>
+									<tr class="odd gradeX">
+										<td>Total no.of files Processed</td>
+										<td>{{ totalfilesprocessed }}</td>
+									</tr>
+									<tr class="odd gradeC">
+										<td>Total Users</td>
+										<td><a href=/users>{{ totalusers }}</a></td>
+									</tr>
+								</table>
+								</div>
+								
+							</div>
+						</div>
+						
+					</div>
+				</section>
+				<!-- ======= .grid_12 - block end ======= -->
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				</section><!-- End of #container -->
+				
+{% endblock %}
+{% include 'footer.html' %}
