@@ -21,13 +21,14 @@ $(document).ready(function(){
  });
  </script>
 <div class="container"><form  id="AddressForm" name="AddressForm" method="get" action="/viewcontacts">
-<h3 class="title-divider"><span>View contacts</span> <small>Search by Contact using First Name, Last Name, Company Name or Telephone Number.</small></h3>
+<h3 class="title-divider"><span>View contacts</span> <small>Search by Contact using First Name, Last Name, Company Name or Telephone Number.<br> If a contact record exists below, then select that contact's name to add a call to the contact record.</small></h3>
 		<div class="row-fluid"> 
         <!-- Plan features -->
         <div class="well well-mini ">  <div class="input-append" style="margin-bottom:1px !important;">
 		
-                   <input type="text" class="input-small" name="cname" id=cname placeholder="Contact Name" style="margin-right:10px;">&nbsp;&nbsp; 
-                  <!--<input type="text" class="input-small" name="cemail" placeholder="Email Address" style="margin-right:10px;">--><input type="text" class="input-small" name="ccompany" placeholder="Company Name" style="margin-right:10px;">&nbsp;&nbsp;
+                   <input type="text"  name="cname" class="input-block-level" size=70 id=cname placeholder="First Name, Last Name, Company Name or Telephone Number" style="margin-right:10px;">&nbsp;&nbsp; 
+                  {%comment%}<input type="text" class="input-small" name="cemail" placeholder="Email Address" style="margin-right:10px;"><input type="text" class="input-small" name="ccompany" placeholder="Company Name" style="margin-right:10px;">&nbsp;&nbsp;
+				 
 				  <select name="ctype" >
 					  <option>Contact Type</option>
 					  {% for item in "all"|contacttypes %}
@@ -35,7 +36,7 @@ $(document).ready(function(){
 						<option value="{{item.contact_typepk}}">{{item.contact_typedesc}}</option>
 					  {%endfor%}
 			      </select>
-                  
+                  {%endcomment%}
 				
               
               <button class="btn btn-info" type="submit" id="searchcontacts">Search Contacts</button>
@@ -45,7 +46,13 @@ $(document).ready(function(){
       </div></form>
  
       <!--Content Area-->
-      <div class="span9 form-wrapper"> <table class="table table-bordered table-hover">
+      <div class="span10 form-wrapper"><form  id="AddressForm"  name="AddressForm" method="get" action="/viewcontacts"> 
+	  <span style="float:right"><select name="noof" style="width:70px;" onchange="this.form.submit()">
+		<option value="25" selected>25
+		<option value="50">50
+		<option value="100">100
+		<option value="200">200
+	  </select></form></span> <table class="table table-bordered table-hover">
           <thead>
             <tr>
               <th>#</th>
@@ -78,7 +85,7 @@ $(document).ready(function(){
 			 <tr><td colspan=9><div class="alert alert-error">
          
           <h4>No Records Found!</h4>
-          Try searching with different keyword!!! </div></td></tr>
+          Try searching with different keyword!!! or <a href="/addcontact"> Add New Contact</a></div></td></tr>
 			{%endfor%}
            
           </tbody>

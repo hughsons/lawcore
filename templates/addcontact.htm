@@ -21,7 +21,7 @@ $(document).ready(function(){
  });
  </script>
 <div class="container"> 
-<h3 class="title-divider"><span>Add New Contact</span> <small>Provide valid details </small></h3>
+<h3 class="title-divider"><span>Add New Contact</span> <small>Please be sure that a contact record does not already exist.Provide valid details </small></h3>
 <form  id="AddressForm" name="AddressForm" method="post" action="/callactions">
 {% csrf_token %} <input type=hidden name="action" value="addcontact"><div class="container-fluid">
      <div class="row-fluid">

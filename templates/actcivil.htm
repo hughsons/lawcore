@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load tagsfilter %}
+{% block content %}
+<div class="container"> 
+<h3 class="title-divider"><span>Active Civil Litigation Matters {% for item in count %} ({{item.count}}) {%endfor%}</span> <small>View Matters</small></h3>
+       <!--Content Area-->
+      <div class="span5 form-wrapper"> <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th>Contact Name</th>
+              <th>MatterID</th>
+			  <th>Telephone</th>
+            </tr>
+          </thead>
+          <tbody>
+		  {% for item in allitems %}
+            <tr>
+              <td ><a href="/vcontactinfo?cid={{item.contact_pk}}">{{item.contact_firstname}} {{item.contact_lastname}}</a></td>
+			  <td><a href="/vmatid?mid={{item.matters_pk}}">{{item.matters_matterid}}</a></td>
+			  <td>{{item.contact_telephone}}</td>
+            </tr>
+			 {%empty%}
+			 <tr><td colspan=9><div class="alert alert-error">
+          <h4>No Records Found!</h4>
+          Try searching with different keyword!!! </div></td></tr>
+			{%endfor%}
+          </tbody>
+        </table> </div>
+   </div>
+{% endblock %}

@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+
+{% load tagsfilter %}
+{% block content %}
+
+<script language="javascript" type="text/javascript" src="/misc/js/prettify.js"></script>
+<script language="javascript" type="text/javascript" src="/misc/js/jquerynew.js"></script>
+ <script language="javascript" type="text/javascript" src="/misc/js/bootstrap-datepicker.js"></script>
+ <link href="/misc/css/datepicker.css" rel="stylesheet">
+<script>
+$(function(){
+	window.prettyPrint && prettyPrint();
+   $('#dp2').datepicker({
+				format: 'yyyy-mm-dd'
+			});
+   $('#dp3').datepicker({
+				format: 'yyyy-mm-dd'
+			});
+   $('#dp4').datepicker({
+				format: 'yyyy-mm-dd'
+			});
+});
+ </script>
+ <form  id="AddressForm" name="AddressForm" method="post" action="/matteractions">
+<div class="container"> 
+<h3 class="title-divider"><span>Contact Records</span> <small><a href="/fmemo?mid={{mid}}">Fact Memo</a> | <a href="/fpays?mid={{mid}}">Payments</a> | <a href="/fconrs?mid={{mid}}">Contact Record</a> | <a href="/fcascon?mid={{mid}}">Case Contacts</a></small></h3>
+ {% csrf_token %} <input type=hidden name="action" value="factedit"><input type=hidden name="mid" value="{{mid}}">
+<div class="container-fluid">
+     <div class="row-fluid">
+ </div>
+		<div class="span6 form-wrapper" style="padding:20px !important">
+		<table border=1><tr><td align=right colspan=2><a href="/editmatter?mid={{mid}}"> Edit</a></td></tr><tr><td width=350>
+		<table>
+				<fieldset>
+				<tr><td>	
+					<label><b>Matter Id</b></td><td>  {{matterinfo.matters_matterid}} </label> </td></tr>
+					
+					 <tr><td><label><b>Primary Attorney</b></label> </td><td>
+					 
+						  {% for item in callstaff %}
+								{% if matterinfo.matters_primaryattorney == item.staff_pk %}
+									{{item.staff_stafffullname}} 
+							  {% endif %}
+						  {%endfor%}
+					     </label></td></tr>
+					 <tr><td> <label><b>Support Attorney 1</b> </label></td><td>
+					 
+						  {% for item in callstaff %}
+								{% if matterinfo.matters_supportattorney1 == item.staff_pk %}
+								 {{item.staff_stafffullname}} 
+							   
+							  {% endif %}
+						  {%endfor%}
+					   </label></td></tr>
+					  <tr><td><label><b>Support Attorney 2</b></label></td><td>
+					 
+						  {% for item in callstaff %}
+						  {% if matterinfo.matters_supportattorney2 == item.staff_pk %}
+							 {{item.staff_stafffullname}} 
+						   
+						  {% endif %}
+							
+						  {%endfor%}
+					  </select>   </label>  </td></tr>
+					  <tr><td><label><b>Date Opened</b></label></td><td> {{matterinfo.matters_dateopened|date:"Y-m-j"}} </td></tr></table></td><td  width=350><table>
+					 <tr><td> <label><b>Date Closed</b></label></td><td> {{matterinfo.matters_dateclosed|date:"Y-m-j"}} </td></tr>
+					 <tr><td> <label><b>Case Closed</b></label></td><td> {{matterinfo.matters_caseclosed|date:"Y-m-j"}} </td></tr>
+					  <tr><td><label><b>Matter Type</b></label></td><td>
+					 
+						  {% for item in mattertype %}
+							   {% if matterinfo.matters_mattertype == item.mattertype_pk %}
+								 {{item.mattertype_desc}} 
+							   
+							  {% endif %}
+							
+						  {%endfor%}
+					     </label></td></tr>
+					 <tr><td> <label><b>Billing Type</b> </label></td><td>
+					 
+						  {% for item in billingtype %}
+						  {% if matterinfo.matters_billingtype == item.billingtype_pk %}
+							 {{item.billingtype_desc}} 
+ 						  {% endif %}
+						  {%endfor%}
+					      </label></td></tr>
+				<tr><td >&nbsp;</td><td>	</td></tr>  
+					   
+</table></td></tr>
+					  
+					   
+</table>
+				</fieldset>
+			
+		</div>
+		 
+		 <div class="span6 form-wrapper" style="padding:20px !important">
+         <span class="label label-large btn-info">Contact Records</span> 
+        
+        <table class="table table-bordered">
+           
+          <tbody>
+		  {% for item in allitems %}
+            <tr>
+              <td >
+			 
+                
+                <strong> Call Message:<br /></strong>
+                {{item.calls_message}}
+                
+                <br />
+                <strong><br />Follow Up Message:<br /></strong>
+				{{item.calls_followupmemo}}
+                 
+                <br />
+			
+			</td>
+            </tr>
+			 {%empty%}
+			 <tr><td colspan=9><div class="alert alert-error">
+         
+          <h4>No Records Found!</h4>
+          Try searching with different keyword!!! </div></td></tr>
+			{%endfor%}
+           
+          </tbody>
+        </table>
+        
+      </div>
+	  
+	</div>
+  </div>     
+  </div>
+  </form>
+{% endblock %}

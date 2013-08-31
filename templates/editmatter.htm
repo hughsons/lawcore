@@ -22,84 +22,70 @@ $(function(){
 });
  </script>
 <div class="container"> 
-<h3 class="title-divider"><span>Add New Matter</span> <small>Provide valid details </small></h3>
-{% if viewmatters|length > 0 %}
- <div class="span5 "> 
- 
-                A Matter already exists for this client, is this the matter you are looking for? 
-                <h4>Client's Current Matters</h4>
- <table class="table table-bordered">
-          <thead>
-            <tr>
-               
-              <th>Matter ID</th>
-              
-              <th>Matter Type</th>
-			   
-			  <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-		  {% for item in viewmatters %}
-            <tr>
-               
-              <td><a href="/vmatid?cid={{item.calls_pk}}">{{item.matters_matterid}}</a></td>
-			   <td>{{item.matters_mattertype|matterttpeval}}</td>
- 
-				<td><a href="/editmatter?mid={{item.matters_pk}}"><button class="btn btn-mini" type="button">Edit</button></a> <a href="/callactions?cid={{item.matters_pk}}&action=delmatid" onclick="javascript: return confirm('Are you sure you want to delete this item ?');"><button class="btn btn-small btn-danger" type="button">Delete</button></a></td>
-            </tr>
-			 {%empty%}
-			 <tr><td colspan=9><div class="alert alert-error">
-         
-          <h4>No Records Found!</h4>
-          Try searching with different keyword!!! </div></td></tr>
-			{%endfor%}
-           
-          </tbody>
-        </table> </div>
- <br>&nbsp;
-{%endif%}
+<h3 class="title-divider"><span>Edit Matter</span> <small>Provide valid details </small></h3>
 <form  id="AddressForm" name="AddressForm" method="post" action="/matteractions">
-{% csrf_token %} <input type=hidden name="action" value="addmatter"><input type=hidden name="matters_clientid1" value="{{cid}}">
+{% csrf_token %} <input type=hidden name="action" value="matteredit"><input type=hidden name="mid" value="{{mid}}">
 <div class="container-fluid">
      <div class="row-fluid">
  </div>
 		<div class="span4 form-wrapper" style="padding:20px !important">
 				<fieldset>
 					
-					<label>Matter Id</label><input type="text" name="matters_matterid" class="controls" />  </label>
-					 
+					<label>Matter Id</label><input type="text" name="matters_matterid" class="controls" value="{{matterinfo.matters_matterid}}" />  </label>
+					
 					 <label>Primary Attorney</label>
 					<select name="matters_primaryattorney" >
 						  {% for item in callstaff %}
+							{% if matterinfo.matters_primaryattorney == item.staff_pk %}
+							<option value="{{item.staff_pk}}" selected>{{item.staff_stafffullname}}</option>
+						  {% else %}
 							<option value="{{item.staff_pk}}">{{item.staff_stafffullname}}</option>
+						  {% endif %}
 						  {%endfor%}
 					  </select>   </label>
-					  <label>Support Attorney</label>
+					  <label>Support Attorney 1 </label>
 					<select name="matters_supportattorney1" >
 						  {% for item in callstaff %}
+							{% if matterinfo.matters_supportattorney1 == item.staff_pk %}
+							<option value="{{item.staff_pk}}" selected>{{item.staff_stafffullname}}</option>
+						  {% else %}
 							<option value="{{item.staff_pk}}">{{item.staff_stafffullname}}</option>
+						  {% endif %}
 						  {%endfor%}
 					  </select>   </label>
 					  <label>Support Attorney 2</label>
 					<select name="matters_supportattorney2" >
 						  {% for item in callstaff %}
+						  {% if matterinfo.matters_supportattorney2 == item.staff_pk %}
+							<option value="{{item.staff_pk}}" selected>{{item.staff_stafffullname}}</option>
+						  {% else %}
 							<option value="{{item.staff_pk}}">{{item.staff_stafffullname}}</option>
+						  {% endif %}
+							
 						  {%endfor%}
 					  </select>   </label>  
-					  <label>Date Opened</label><input type="text" name="matters_dateopened" id="dp2" />   </label>
-					  {%comment%}<label>Date Closed</label><input type="text" name="matters_dateclosed" id="dp3" />  </label>
-					  <label>Case Closed</label><input type="text" name="matters_caseclosed" id="dp4" />  </label>{%endcomment%}
+					  <label>Date Opened</label><input type="text" name="matters_dateopened" id="dp2" value={{matterinfo.matters_dateopened|date:"Y-m-j"}} />   </label>
+					  <label>Date Closed</label><input type="text" name="matters_dateclosed" id="dp3" value="{{matterinfo.matters_dateclosed|date:"Y-m-j"}}" />  </label>
+					  <label>Case Closed</label><input type="text" name="matters_caseclosed" id="dp4" value="{{matterinfo.matters_caseclosed|date:"Y-m-j"}}" />  </label>
 					  <label>Matter Type</label>
 					<select name="matters_mattertype" >
 						  {% for item in mattertype %}
+						   {% if matterinfo.matters_mattertype == item.mattertype_pk %}
+							<option value="{{item.mattertype_pk}}" selected>{{item.mattertype_desc}}</option>
+						  {% else %}
 							<option value="{{item.mattertype_pk}}">{{item.mattertype_desc}}</option>
+						  {% endif %}
+							
 						  {%endfor%}
 					  </select>   </label>
-					  <label>Billing Type</label>
+					  <label>Billing Type {{matterinfo.matters_billingtype}}</label>
 					<select name="matters_billingtype" >
 						  {% for item in billingtype %}
+						  {% if matterinfo.matters_billingtype == item.billingtype_pk %}
+							<option value="{{item.billingtype_pk}}" selected>{{item.billingtype_desc}}</option>
+						  {% else %}
 							<option value="{{item.billingtype_pk}}">{{item.billingtype_desc}}</option>
+						  {% endif %}
 						  {%endfor%}
 					  </select>   </label>
 					  

@@ -21,7 +21,8 @@ $(document).ready(function(){
  });
  </script>
 <div class="container"> 
-<h3 class="title-divider"><span>View Contact</span> <small>full contact info below. </small></h3>
+<h3 class="title-divider"><span>View Contact</span> <small>full contact info below. <a  style="width:25px" href="#test_modal" data-toggle="modal">Print</a> </small>
+</h3>
  
 <div class="container-fluid">
      <div class="row-fluid">
@@ -60,5 +61,33 @@ $(document).ready(function(){
 	</div>
   </div>     
   </div>
+  <div class="modal fade" id="test_modal">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+     
+  </div>
+  <div class="modal-body">
+    <dl class="dl-horizontal">
+            <dt>Name</dt>
+            <dd>{{info.contact_firstname}} {{info.contact_lastname}}</dd>
+            
+			<dt>Email Address</dt>
+            <dd>{{info.contact_email}}</dd>
+			<dt>Company</dt>
+            <dd>{{info.contact_company}}</dd>
+			<dt>Telephone</dt>
+            <dd>{{info.contact_telephone}}</dd>
+			<dt>Contact Type</dt>
+            <dd>{{info.contact_pk|contacttypes}}</dd>
+			<dt>Address 1</dt>
+            <dd>{{info.contact_address1}}</dd>
+			<dt>Address 2</dt>
+            <dd>{{info.contact_address2}}</dd>
+			<dt>Location</dt>
+            <dd>{{info.contact_city}}, {{info.contact_state}}, {{info.contact_zip}}</dd>
+          </dl>
+  </div>
+  
+</div>
   </form>
 {% endblock %}

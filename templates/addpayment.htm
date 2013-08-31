@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+
+{% load tagsfilter %}
+{% block content %}
+
+<script language="javascript" type="text/javascript" src="/misc/js/prettify.js"></script>
+<script language="javascript" type="text/javascript" src="/misc/js/jquerynew.js"></script>
+ <script language="javascript" type="text/javascript" src="/misc/js/bootstrap-datepicker.js"></script>
+ <link href="/misc/css/datepicker.css" rel="stylesheet">
+<script>
+$(function(){
+	window.prettyPrint && prettyPrint();
+   $('#dp2').datepicker({
+				format: 'yyyy-mm-dd'
+			});
+   $('#dp3').datepicker({
+				format: 'yyyy-mm-dd'
+			});
+   $('#dp4').datepicker({
+				format: 'yyyy-mm-dd'
+			});
+});
+ </script>
+<div class="container"> 
+<h3 class="title-divider"><span>Add Payment</span> <small>Provide valid details </small></h3>
+ 
+{% if viewpayments|length > 0 %}
+ <div class="span4 "> 
+   <table class="table table-bordered">
+          <thead>
+            <tr>
+               
+              <th>Amount</th>
+              
+              <th>Date</th>
+			   
+			  <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+		  {% for item in viewpayments %}
+            <tr>
+               
+              <td>{{item.payments_amount}}</td>
+			   <td>{{item.payments_receiveddate}}</td>
+ 
+				<td><a href="/edipayform?pid={{item.payments_pk}}"><button class="btn btn-mini" type="button">Edit</button></a> <a href="/matteractions?pid={{item.payments_pk}}&action=delpayid" onclick="javascript: return confirm('Are you sure you want to delete this item ?');"><button class="btn btn-small btn-danger" type="button">Delete</button></a></td>
+            </tr>
+			 {%empty%}
+			 <tr><td colspan=9><div class="alert alert-error">
+         
+          <h4>No Records Found!</h4>
+          Try searching with different keyword!!! </div></td></tr>
+			{%endfor%}
+           
+          </tbody>
+        </table> </div>
+ <br>&nbsp;
+{%endif%}
+<form  id="AddressForm" name="AddressForm" method="post" action="/matteractions">
+{% csrf_token %} <input type=hidden name="action" value="maddpayments"><input type=hidden name="payments_matterpk" value="{{mid}}">
+<input type=hidden name="payments_staffpk" value="{{matterinfo.matters_primaryattorney}}"><input type=hidden name="payments_clientpk" value="{{matterinfo.matters_clientid1}}">
+<div class="container-fluid">
+     <div class="row-fluid">
+ </div>
+		<div class="span4 form-wrapper" style="padding:20px !important">
+				<fieldset>
+					
+					<label>Amount</label><input type="text" name="payments_amount" class="controls" />  </label>
+					<label>Recieved Date</label><input type="text" name="payments_receiveddate" id="dp2" />   </label>
+					<label>Payment Method</label>
+					<select name="payments_methodpk" >
+						   
+						  {% for item in paymentmethods %}
+							<option value="{{item.paymentmethods_pk}}">{{item.paymentmethods_desc}}</option>
+						  {%endfor%}
+					  </select>   </label>
+				 
+					  
+					  
+					  
+					  
+					  <label><button type="submit" class="btn">Submit</button>
+				</fieldset>
+			
+		</div>
+		 
+		 
+	</div>
+  </div>     
+  </div>
+  </form>
+{% endblock %}

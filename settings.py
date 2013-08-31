@@ -16,16 +16,17 @@ if (os.getenv('SERVER_SOFTWARE', '').startswith('Google App Engine') or
     }
 else:
     # Running in development, so use a local MySQL database
-    DATABASES = {
+
+	DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
             'USER': 'root',
             'PASSWORD': 'root',
             'HOST': 'localhost',
 			'NAME': 'lawcore',
-            #'NAME': 'saltwaterfish',
         }
     }
+
 __author__ = ('hugson.simon@martinlawfirm.com (Hughson Simon)')
 # Activate django-dbindexer for the default database
 #DATABASES['native'] = DATABASES['default']
@@ -45,9 +46,6 @@ INSTALLED_APPS = (
     'autoload',
     'dbindexer',
 	'fixtures',
-
-
-    # djangoappengine should come last, so it can override a few manage.py commands
     'djangoappengine',
 )
 FIXTURE_DIRS = (

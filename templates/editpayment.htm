@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% load tagsfilter %}
+{% block content %}
+
+<script language="javascript" type="text/javascript" src="/misc/js/prettify.js"></script>
+<script language="javascript" type="text/javascript" src="/misc/js/jquerynew.js"></script>
+ <script language="javascript" type="text/javascript" src="/misc/js/bootstrap-datepicker.js"></script>
+ <link href="/misc/css/datepicker.css" rel="stylesheet">
+<script>
+$(function(){
+	window.prettyPrint && prettyPrint();
+   $('#dp2').datepicker({
+				format: 'yyyy-mm-dd'
+			});
+   $('#dp3').datepicker({
+				format: 'yyyy-mm-dd'
+			});
+   $('#dp4').datepicker({
+				format: 'yyyy-mm-dd'
+			});
+});
+ </script>
+<div class="container"> 
+<h3 class="title-divider"><span>Add Payment</span> <small>Provide valid details </small></h3>
+ 
+
+<form  id="AddressForm" name="AddressForm" method="post" action="/matteractions">
+{% csrf_token %} <input type=hidden name="action" value="edipayment"><input type=hidden name="payments_pk" value="{{pid}}">
+ 
+<div class="container-fluid">
+     <div class="row-fluid">
+ </div>
+		<div class="span4 form-wrapper" style="padding:20px !important">
+				<fieldset>
+					
+					<label>Amount</label><input type="text" name="payments_amount" class="controls" value="{{viewpayments.payments_amount}}" />  </label>
+					<label>Recieved Date</label><input type="text" name="payments_receiveddate" id="dp2" value="{{viewpayments.payments_receiveddate}}" />   </label>
+					<label>Payment Method</label>
+					<select name="payments_methodpk" >
+						   
+						  {% for item in paymentmethods %}
+							<option value="{{item.paymentmethods_pk}}">{{item.paymentmethods_desc}}</option>
+						  {%endfor%}
+					  </select>   </label>
+
+					  <label><button type="submit" class="btn">Submit</button>
+				</fieldset>
+			
+		</div>
+		 
+		 
+	</div>
+  </div>     
+  </div>
+  </form>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% load tagsfilter %}
+{% block content %}
+
+ 
+<div class="container"> 
+<h3 class="title-divider"><span>Practise Manager</span> <small>Provide valid details </small></h3>
+<form  id="AddressForm" name="AddressForm" method="post" action="/matteractions">
+{% csrf_token %} <input type=hidden name="action" value="matteredit"><input type=hidden name="mid" value="{{mid}}">
+<div class="container-fluid">
+     <div class="row-fluid">
+ </div>
+		<div class="span3 form-wrapper" style="padding:20px !important">
+				<fieldset>
+					 <p>
+    <li><a href="/actdr">Active Family Law Matters</a></li>
+    <li><a href="/actbcy">Active Bankruptcy Matters</a></li>
+    <li><a href="/actpi">Active Personal Injury / Contingency Matters</a></li>
+    <li><a href="/actep">Active Estate Planning Matters</a></li>
+    <li><a href="/actprobate">Active Probate Matters</a></li>
+    <li><a href="/acttransac">Active Business & Transactional Matters</a></li>
+    <li><a href="/actcivil">Active Civil Litigation Matters</a></li></p>
+    <p>
+    <li><a href="/wordomc">Workflow - Contested DOM</a></li>
+    <li><a href="/worpi">Workflow - Personal Injury</a></li>
+    <li><a href="/worprobate">Workflow - Probate</a></li>
+    <br />
+    <li><a href="/opendemands">Open Demands</a></li>
+    <li><a href="/specdamages">Special Damages</a></li>
+    <li><a href="/dailycasenotes">Daily Case Notes</a></li>
+    <li><a href="/datecasenotes">Case Notes Date Range</a></li>
+    </p>
+				</fieldset>
+			
+		</div>
+		 
+		 
+	</div>
+  </div>     
+  </div>
+  </form>
+{% endblock %}

@@ -32,8 +32,8 @@ $(document).ready(function(){
         <!-- Plan features -->
         <div class="well well-mini ">  <div class="input-append" style="margin-bottom:1px !important;">
 		
-                   <input type="text" class="input-small" name="cname" id=cname placeholder="Contact Name" style="margin-right:10px;">  &nbsp;&nbsp; 
-                  <select name="matters_mattertype" >
+                   <input type="text" class="input-block-level" size=70 name="cname" id=cname placeholder="First Name, Last Name, Company Name or Telephone Number" style="margin-right:10px;">  &nbsp;&nbsp; 
+                 {%comment%} <select name="matters_mattertype" >
 					  <option>Matter Type</option>
 					  {% for item in mattertype %}
 							<option value="{{item.callaction_pk}}">{{item.mattertype_desc}}</option>
@@ -44,14 +44,20 @@ $(document).ready(function(){
 					  {% for item in billingtype %}
 							<option value="{{item.callsource_pk}}">{{item.billingtype_desc}}</option>
 						  {%endfor%}
-			      </select>
+			      </select>{%endcomment%}
               <button class="btn btn-info" type="submit" id="searchcontacts">Find Matters</button>
 			  
             </div>
          </div>
       </div></form>
        <!--Content Area-->
-      <div class="span11 form-wrapper"> <table class="table table-bordered">
+      <div class="span11 form-wrapper"><form  id="AddressForm"  name="AddressForm" method="get" action="/viewmatters"> 
+	  <span style="float:right"><select name="noof" style="width:70px;" onchange="this.form.submit()">
+		<option value="15" selected>25
+		<option value="50">50
+		<option value="100">100
+		<option value="200">200
+	  </select></form></span> <table class="table table-bordered">
           <thead>
             <tr>
               <th>Matter #</th>
@@ -62,20 +68,20 @@ $(document).ready(function(){
 			  <th>Matter Type</th>
 			  <th>Billing Type</th>
 			  <th>Case Closed</th>
-			  <th>Actions</th>
+			  <th width=120>Actions</th>
             </tr>
           </thead>
           <tbody>
 		  {% for item in allitems %}
             <tr>
-              <td ><a href="/vcallinfo?cid={{item.matters_matterid}}"> {{item.matters_matterid}}</a></td>
-              <td><a href="/vcontactinfo?cid={{item.matters_clientid1}}">{{item.matters_clientid1|contactsvalue}}</a></td>
+              <td ><a href="/vmatid?mid={{item.matters_pk}}"> {{item.matters_matterid}}</a></td>
+              <td><a href="/vcontactinfo?cid={{item.matters_clientid1}}">{{item.Contact_FirstName}} {{item.Contact_LastName}}</a></td>
 			  <td> {{item.matters_primaryattorney|staffvalues}} </td>
 			  <td> {{item.matters_supportattorney1|staffvalues}} </td>
 			  <td>{{item.matters_mattertype|matterttpeval}}</td>
 			  <td>{{item.matters_billingtype|billingtpeval}}</td>
 			   <td>{{item.matters_caseclosed|date:"F j, Y"}}</td>
-				<td><a href=""><button class="btn btn-mini" type="button">Edit</button></a> <a href="/payadd?mid={{item.contact_pk}}"><button class="btn btn-info" type="button">Add Payment</button></a>{%comment%}<a href="/callactions?cid={{item.calls_pk}}&action=delcallid" onclick="javascript: return confirm('Are you sure you want to delete this item ?');"><button class="btn btn-small btn-danger" type="button">Delete</button></a>{%endcomment%}</td>
+				<td><a href="/editmatter?mid={{item.matters_pk}}"><button class="btn btn-mini" type="button">Edit</button></a> <a href="/addpayment?mid={{item.matters_pk}}"><button class="btn btn-mini btn-info" type="button">Payments</button></a><br>&nbsp;<a href="/viewtasks?mid={{item.matters_pk}}"><button class="btn btn-mini btn-info" type="button">Tasks</button></a>&nbsp;<a href="/addcase?mid={{item.matters_pk}}"><button class="btn btn-mini btn-info" type="button">Case Notes</button></a>{%comment%}<a href="/callactions?cid={{item.calls_pk}}&action=delcallid" onclick="javascript: return confirm('Are you sure you want to delete this item ?');"><button class="btn btn-small btn-danger" type="button">Delete</button></a>{%endcomment%}</td>
             </tr>
 			 {%empty%}
 			 <tr><td colspan=9><div class="alert alert-error">

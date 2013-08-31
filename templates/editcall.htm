@@ -21,10 +21,10 @@ $(document).ready(function(){
  });
  </script>
 <div class="container"> 
-<h3 class="title-divider"><span>Add New Call</span> <small>Provide valid details </small></h3>
+<h3 class="title-divider"><span>Edit Call</span> <small>Provide valid details </small></h3>
 <form  id="AddressForm" name="AddressForm" method="post" action="/callactions">
-{% csrf_token %} <input type=hidden name="action" value="addnewcall">
-<input type=hidden name="calls_contactid" value="{{cid}}"><div class="container-fluid">
+{% csrf_token %} <input type=hidden name="action" value="edtcall">
+<input type=hidden name="calls_pk" value="{{caid}}"><div class="container-fluid">
      <div class="row-fluid">
 	  
 		<div class="span6 form-wrapper" style="padding:20px !important">
@@ -36,7 +36,7 @@ $(document).ready(function(){
 		{%else%}
 		 <b class="role">Contact Name</b> 
 		 <table border=0 width=500><tr><td valign=top>
-				 
+				
 					<label>Call Type</label>
 					<select name="calls_calltypeid" >
 						   
@@ -54,7 +54,7 @@ $(document).ready(function(){
 					  </select>  
 					  </label>
 					    
-					  <label>Call Message<br><textarea name="calls_message" rows=3 /> </textarea> </label>
+					  <label>Call Message<br><textarea name="calls_message" rows=3 />{{callinfo.calls_message}} </textarea> </label>
 					 <label>Call For</label>
 						<select name="calls_staffid" >
 						   

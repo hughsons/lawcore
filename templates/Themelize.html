@@ -8,3 +8,7 @@ ALTER TABLE `tblcalls`  CHANGE COLUMN `Calls_OpenCall` `Calls_OpenCall` int(2) N
 ALTER TABLE `lawcore`.`tblmatters`  CHANGE COLUMN `Matters_Active` `Matters_Active` int(11) NULL DEFAULT NULL;
 
 ALTER TABLE `lawcore`.`tblmatters`  ADD COLUMN `Matters_datecreated` varchar(255) NULL DEFAULT NULL;
+
+ALTER TABLE `lawcore`.`tblmattertasks`  CHANGE COLUMN `MatterTasks_TaskComplete` `MatterTasks_TaskComplete` int(11) NULL DEFAULT NULL,  ADD PRIMARY KEY (`MatterTasks_PK`);
+
+ALTER TABLE `lawcore`.`tblcalls`  ADD COLUMN `Calls_Deleted` char(1) NULL DEFAULT NULL;

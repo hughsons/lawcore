@@ -30,7 +30,7 @@ $(document).ready(function(){
 }
 </style>
 <div class="container"> 
-<h3 class="title-divider"><span>View Call</span> <small>full contact info below. </small></h3>
+<h3 class="title-divider"><span>View Call</span> <small>full contact info below. <a  style="width:25px" href="#test_modal" data-toggle="modal">Print</a></small></h3>
  
 <div class="container-fluid">
      <div class="row-fluid">
@@ -78,5 +78,43 @@ $(document).ready(function(){
 	</div>
   </div>     
   </div>
+  <div class="modal fade" id="test_modal">
+  <div class="modal-header">
+    <a class="close" data-dismiss="modal">&times;</a>
+     
+  </div>
+  <div class="modal-body">
+    <dl class="dl-horizontal">
+           <blockquote>
+          <p><font  size=3>{{cinfo.contact_firstname}} {{cinfo.contact_lastname}}<br>{{cinfo.contact_email}}<br>{{cinfo.contact_company}}<br>{{cinfo.contact_telephone}} 
+		  <br>{{cinfo.contact_city}}, {{cinfo.contact_state}}, {{cinfo.contact_zip}}</font></p>
+           </blockquote>
+			
+
+<dl class="dl-horizontal">
+            <dt>Call Status</dt>
+            <dd>{%if info.calls_opencall >= 1 %}Open{%else%}Close{%endif%}</dd>
+            
+			<dt>Call For</dt>
+            <dd>&nbsp;{{info.calls_staffid|staffvalues}}</dd>
+			<dt>Call By</dt>
+            <dd>&nbsp;{{info.calls_receptionid|staffvalues}}</dd>
+			<dt>Call Action</dt>
+            <dd>&nbsp;{{info.calls_callactionid|callactions}}</dd>
+			<dt>Telephone</dt>
+            <dd>&nbsp;{{info.contact_telephone}}</dd>
+			<dt>Call Source1</dt>
+            <dd>&nbsp;{{info.calls_callsource1|callsources}}</dd>
+			<dt>Call Source2</dt>
+            <dd>&nbsp;{{info.calls_callsource2|callsources}}</dd>
+			<dt>Call Source3</dt>
+            <dd>&nbsp;{{info.calls_callsource3|callsources}}</dd>
+			 
+            <dd>{{info.calls_message}}</dd>
+			
+          </dl>
+  </div>
+  
+</div>
   </form>
 {% endblock %}

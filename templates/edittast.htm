@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% load tagsfilter %}
+{% block content %}
+
+<script language="javascript" type="text/javascript" src="/misc/js/prettify.js"></script>
+<script language="javascript" type="text/javascript" src="/misc/js/jquerynew.js"></script>
+ <script language="javascript" type="text/javascript" src="/misc/js/bootstrap-datepicker.js"></script>
+ <link href="/misc/css/datepicker.css" rel="stylesheet">
+<script>
+$(function(){
+	window.prettyPrint && prettyPrint();
+   $('#dp2').datepicker({
+				format: 'yyyy-mm-dd'
+			});
+   $('#dp3').datepicker({
+				format: 'yyyy-mm-dd'
+			});
+   $('#dp4').datepicker({
+				format: 'yyyy-mm-dd'
+			});
+});
+ </script>
+<div class="container"> 
+<h3 class="title-divider"><span>Edit Task</span> <small>Provide valid details </small></h3>
+
+<form  id="AddressForm" name="AddressForm" method="post" action="/matteractions">
+{% csrf_token %} <input type=hidden name="action" value="maddtask"><input type=hidden name="mattertasks_matterpk" value="{{tid}}">
+ 
+<div class="container-fluid">
+     <div class="row-fluid">
+ </div>
+		<div class="span4 form-wrapper" style="padding:20px !important">
+				<fieldset>
+					
+					<label>Subject</label><input type="text" name="mattertasks_subject" class="controls" value="{{mattertasks.mattertasks_subject}}" />  </label>
+					<label>Text</label><textarea name="mattertasks_text" class="input-block-level placeholder" rows="8" style="width: 224px; height: 60px;">{{mattertasks.mattertasks_text}}</textarea> </label>
+					<label>Date Created</label><input type="text" name="mattertasks_datecreated" id="dp3" value="{{mattertasks.mattertasks_datecreated}}" />   </label>
+					<label>Due Date</label><input type="text" name="mattertasks_duedate" value="{{mattertasks.mattertasks_duedate}}" id="dp2" />   </label>
+ 
+					   <label>Staff Assigned 1 </label>
+					<select name="mattertasks_assignedstaff1pk" >
+						  {% for item in callstaff %}
+							 
+							<option value="{{item.staff_pk}}">{{item.staff_stafffullname}}</option>
+						   
+						  {%endfor%}
+					  </select>   </label>
+
+					   <label>Staff Assigned 2 </label>
+					<select name="mattertasks_assignedstaff2pk" >
+						  {% for item in callstaff %}
+							 
+							<option value="{{item.staff_pk}}">{{item.staff_stafffullname}}</option>
+						   
+						  {%endfor%}
+					  </select>   </label>
+					  
+					  <label><button type="submit" class="btn">Submit</button>
+				</fieldset>
+			
+		</div>
+		 
+		 
+	</div>
+  </div>     
+  </div>
+  </form>
+{% endblock %}

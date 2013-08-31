@@ -6,6 +6,314 @@ def validate_not_spaces(value):
         
         raise ValidationError(u"You must provide more than just whitespace.")
 
+class CountActivebcy(models.Model):
+    count = models.IntegerField(primary_key=True, db_column='COUNT', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_activebcy'
+        app_label = ''
+
+class CountActivecivil(models.Model):
+    count = models.IntegerField(primary_key=True, blank=True)
+    class Meta:
+        db_table = u'count_activecivil'
+        app_label = ''
+
+class CountActivecontingency(models.Model):
+    count = models.IntegerField(primary_key=True, db_column='COUNT', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_activecontingency'
+        app_label = ''
+
+class CountActivedr(models.Model):
+    count = models.IntegerField(primary_key=True, db_column='COUNT', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_activedr'
+        app_label = ''
+
+class CountActiveep(models.Model):
+    count = models.IntegerField(primary_key=True, db_column='COUNT', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_activeep'
+        app_label = ''
+
+class CountActiveprobate(models.Model):
+    count = models.IntegerField(primary_key=True, db_column='COUNT', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_activeprobate'
+        app_label = ''
+
+class CountActivetransactional(models.Model):
+    count = models.IntegerField(primary_key=True, db_column='COUNT', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_activetransactional'
+        app_label = ''
+
+class CountApptsTodayBcy(models.Model):
+    currentappts = models.IntegerField(null=True, db_column='CurrentAppts', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_appts_today_bcy'
+        app_label = ''
+
+class CountApptsTodayDom(models.Model):
+    currentappts = models.IntegerField(null=True, db_column='CurrentAppts', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_appts_today_dom'
+        app_label = ''
+
+class CountApptsTodayDr(models.Model):
+    currentappts = models.IntegerField(null=True, db_column='CurrentAppts', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_appts_today_dr'
+        app_label = ''
+
+class CountApptsTodayEp(models.Model):
+    currentappts = models.IntegerField(null=True, db_column='CurrentAppts', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_appts_today_ep'
+        app_label = ''
+
+class CountApptsTodayPi(models.Model):
+    currentappts = models.IntegerField(null=True, db_column='CurrentAppts', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_appts_today_pi'
+        app_label = ''
+
+class CountCallsToday(models.Model):
+    todaycalls = models.IntegerField(null=True, db_column='TodayCalls', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_calls_today'
+        app_label = ''
+
+class CountCallsTodayBcy(models.Model):
+    currentappts = models.IntegerField(null=True, db_column='CurrentAppts', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_calls_today_bcy'
+        app_label = ''
+
+class CountCallsTodayDom(models.Model):
+    currentappts = models.IntegerField(null=True, db_column='CurrentAppts', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_calls_today_dom'
+        app_label = ''
+
+class CountCallsTodayDr(models.Model):
+    currentappts = models.IntegerField(null=True, db_column='CurrentAppts', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_calls_today_dr'
+        app_label = ''
+
+class CountCallsTodayEp(models.Model):
+    currentappts = models.IntegerField(null=True, db_column='CurrentAppts', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_calls_today_ep'
+        app_label = ''
+
+class CountCallsTodayPi(models.Model):
+    currentappts = models.IntegerField(null=True, db_column='CurrentAppts', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_calls_today_pi'
+        app_label = ''
+
+class CountNewmattersbymonthBcy(models.Model):
+    matteryear = models.IntegerField(null=True, db_column='MatterYear', blank=True) # Field name made lowercase.
+    mattermonth = models.IntegerField(null=True, db_column='MatterMonth', blank=True) # Field name made lowercase.
+    bcymatters = models.IntegerField(null=True, db_column='BCYMatters', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_newmattersbymonth_bcy'
+        app_label = ''
+
+class CountNewmattersbymonthDr(models.Model):
+    matteryear = models.IntegerField(null=True, db_column='MatterYear', blank=True) # Field name made lowercase.
+    mattermonth = models.IntegerField(null=True, db_column='MatterMonth', blank=True) # Field name made lowercase.
+    drmatters = models.IntegerField(null=True, db_column='DRMatters', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_newmattersbymonth_dr'
+        app_label = ''
+
+class CountNewmattersbymonthEp(models.Model):
+    matteryear = models.IntegerField(null=True, db_column='MatterYear', blank=True) # Field name made lowercase.
+    mattermonth = models.IntegerField(null=True, db_column='MatterMonth', blank=True) # Field name made lowercase.
+    drmatters = models.IntegerField(null=True, db_column='DRMatters', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_newmattersbymonth_ep'
+        app_label = ''
+
+class CountNewmattersbymonthPi(models.Model):
+    matteryear = models.IntegerField(null=True, db_column='MatterYear', blank=True) # Field name made lowercase.
+    mattermonth = models.IntegerField(null=True, db_column='MatterMonth', blank=True) # Field name made lowercase.
+    bcymatters = models.IntegerField(null=True, db_column='BCYMatters', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_newmattersbymonth_pi'
+        app_label = ''
+
+class CountNewmattersbymonthProbate(models.Model):
+    matteryear = models.IntegerField(null=True, db_column='MatterYear', blank=True) # Field name made lowercase.
+    mattermonth = models.IntegerField(null=True, db_column='MatterMonth', blank=True) # Field name made lowercase.
+    probatematters = models.IntegerField(null=True, db_column='ProbateMatters', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'count_newmattersbymonth_probate'
+        app_label = ''
+
+class Countcalls12Monthstrailingdr(models.Model):
+    callyear = models.IntegerField(null=True, db_column='CallYear', blank=True) # Field name made lowercase.
+    callmonth = models.IntegerField(null=True, db_column='CallMonth', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countcalls12monthstrailingdr'
+        app_label = ''
+
+class Countcalls12Monthstrailingep(models.Model):
+    callyear = models.IntegerField(null=True, db_column='CallYear', blank=True) # Field name made lowercase.
+    callmonth = models.IntegerField(null=True, db_column='CallMonth', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countcalls12monthstrailingep'
+        app_label = ''
+
+class Countcalls12Monthstrailingnewcontacts(models.Model):
+    callyear = models.IntegerField(null=True, db_column='CallYear', blank=True) # Field name made lowercase.
+    callmonth = models.IntegerField(null=True, db_column='CallMonth', blank=True) # Field name made lowercase.
+    callsource = models.CharField(max_length=150, db_column='CallSource', blank=True) # Field name made lowercase.
+    calltype = models.CharField(max_length=150, db_column='CallType', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countcalls12monthstrailingnewcontacts'
+        app_label = ''
+
+class Countcalls12Monthstrailingpi(models.Model):
+    callyear = models.IntegerField(null=True, db_column='CallYear', blank=True) # Field name made lowercase.
+    callmonth = models.IntegerField(null=True, db_column='CallMonth', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countcalls12monthstrailingpi'
+        app_label = ''
+
+class Countcalls12Monthstrailingprobate(models.Model):
+    callyear = models.IntegerField(null=True, db_column='CallYear', blank=True) # Field name made lowercase.
+    callmonth = models.IntegerField(null=True, db_column='CallMonth', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countcalls12monthstrailingprobate'
+        app_label = ''
+
+class Countcalls12Monthstrailybcy(models.Model):
+    callyear = models.IntegerField(null=True, db_column='CallYear', blank=True) # Field name made lowercase.
+    callmonth = models.IntegerField(null=True, db_column='CallMonth', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countcalls12monthstrailybcy'
+        app_label = ''
+
+class Countcalls30Daystrailingbcy(models.Model):
+    calldate = models.IntegerField(null=True, db_column='CallDate', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countcalls30daystrailingbcy'
+        app_label = ''
+
+class Countcalls30Daystrailingdr(models.Model):
+    calldate = models.IntegerField(null=True, db_column='CallDate', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countcalls30daystrailingdr'
+        app_label = ''
+
+class Countcalls30Daystrailingep(models.Model):
+    calldate = models.IntegerField(null=True, db_column='CallDate', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countcalls30daystrailingep'
+        app_label = ''
+
+class Countcalls30Daystrailingpi(models.Model):
+    calldate = models.IntegerField(null=True, db_column='CallDate', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countcalls30daystrailingpi'
+        app_label = ''
+
+class Countcalls30Daystrailingprobate(models.Model):
+    calldate = models.IntegerField(null=True, db_column='CallDate', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countcalls30daystrailingprobate'
+        app_label = ''
+
+class Countnewmatters2Yearstrailingdr(models.Model):
+    matteryear = models.IntegerField(null=True, db_column='MatterYear', blank=True) # Field name made lowercase.
+    mattermonth = models.IntegerField(null=True, db_column='MatterMonth', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countnewmatters2yearstrailingdr'
+        app_label = ''
+
+class Countnewmatters2Yearstrailingep(models.Model):
+    matteryear = models.IntegerField(null=True, db_column='MatterYear', blank=True) # Field name made lowercase.
+    mattermonth = models.IntegerField(null=True, db_column='MatterMonth', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countnewmatters2yearstrailingep'
+        app_label = ''
+
+class Countnewmatters2Yearstrailingprobate(models.Model):
+    matteryear = models.IntegerField(null=True, db_column='MatterYear', blank=True) # Field name made lowercase.
+    mattermonth = models.IntegerField(null=True, db_column='MatterMonth', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countnewmatters2yearstrailingprobate'
+        app_label = ''
+
+class Countnewmatters2Yrstrailingbcy(models.Model):
+    matteryear = models.IntegerField(null=True, db_column='MatterYear', blank=True) # Field name made lowercase.
+    mattermonth = models.IntegerField(null=True, db_column='MatterMonth', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countnewmatters2yrstrailingbcy'
+        app_label = ''
+
+class Countnewmatters2Yrstrailingpi(models.Model):
+    matteryear = models.IntegerField(null=True, db_column='MatterYear', blank=True) # Field name made lowercase.
+    mattermonth = models.IntegerField(null=True, db_column='MatterMonth', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countnewmatters2yrstrailingpi'
+        app_label = ''
+
+class Countnewmatters30Daystrailingbcy(models.Model):
+    matterdate = models.IntegerField(null=True, db_column='MatterDate', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countnewmatters30daystrailingbcy'
+        app_label = ''
+
+class Countnewmatters30Daystrailingdr(models.Model):
+    matterdate = models.IntegerField(null=True, db_column='MatterDate', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countnewmatters30daystrailingdr'
+        app_label = ''
+
+class Countnewmatters30Daystrailingep(models.Model):
+    matterdate = models.IntegerField(null=True, db_column='MatterDate', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countnewmatters30daystrailingep'
+        app_label = ''
+
+class Countnewmatters30Daystrailingpi(models.Model):
+    matterdate = models.IntegerField(null=True, db_column='MatterDate', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countnewmatters30daystrailingpi'
+        app_label = ''
+
+class Countnewmatters30Daystrailingprobate(models.Model):
+    matterdate = models.IntegerField(null=True, db_column='MatterDate', blank=True) # Field name made lowercase.
+    count = models.IntegerField(null=True, db_column='Count', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'countnewmatters30daystrailingprobate'
+        app_label = ''
+
 class Tblbillingtype(models.Model):
     billingtype_pk = models.IntegerField(primary_key=True, db_column='BillingType_PK') # Field name made lowercase.
     billingtype_desc = models.CharField(max_length=150, db_column='BillingType_Desc', blank=True) # Field name made lowercase.
@@ -36,6 +344,7 @@ class Tblcalls(models.Model):
     calls_callactive = models.TextField(db_column='Calls_CallActive') # Field name made lowercase. This field type is a guess.
     calls_matterid = models.IntegerField(null=True, db_column='Calls_MatterID', blank=True) # Field name made lowercase.
     calls_followupmemo = models.TextField(db_column='Calls_FollowUpMemo', blank=True) # Field name made lowercase.
+    calls_deleted = models.CharField(max_length=150, db_column='Calls_Deleted', blank=True) # Field name made lowercase.
     addedby = models.IntegerField(null=True, db_column='addedby', blank=True) # Field name made lowercase.
     class Meta:
         db_table = u'tblcalls'
@@ -73,7 +382,7 @@ class Tblstaff(models.Model):
         app_label = ''
 
 class Tblcasecontacts(models.Model):
-    casecontacts_pk = models.IntegerField(unique=True, db_column='CaseContacts_PK') # Field name made lowercase.
+    casecontacts_pk = models.IntegerField(primary_key=True, db_column='CaseContacts_PK') # Field name made lowercase.
     casecontacts_matterpk = models.IntegerField(db_column='CaseContacts_MatterPK') # Field name made lowercase.
     casecontacts_oc1 = models.IntegerField(null=True, db_column='CaseContacts_OC1', blank=True) # Field name made lowercase.
     casecontacts_oc2 = models.IntegerField(null=True, db_column='CaseContacts_OC2', blank=True) # Field name made lowercase.
@@ -88,6 +397,18 @@ class Tblcasecontacts(models.Model):
     casecontacts_med2 = models.IntegerField(null=True, db_column='CaseContacts_Med2', blank=True) # Field name made lowercase.
     class Meta:
         db_table = u'tblcasecontacts'
+        app_label = ''
+
+class Tblcasenotes(models.Model):
+    casenotes_pk = models.IntegerField(primary_key=True, db_column='CaseNotes_PK') # Field name made lowercase.
+    casenotes_matterpk = models.IntegerField(null=True, db_column='CaseNotes_MatterPK', blank=True) # Field name made lowercase.
+    casenotes_notedate = models.DateField(null=True, db_column='CaseNotes_NoteDate', blank=True) # Field name made lowercase.
+    casenotes_notetext = models.TextField(db_column='CaseNotes_NoteText', blank=True) # Field name made lowercase.
+    casenotes_notesubject = models.TextField(db_column='CaseNotes_NoteSubject', blank=True) # Field name made lowercase.
+    casenotes_staffpk = models.IntegerField(null=True, db_column='CaseNotes_StaffPK', blank=True) # Field name made lowercase.
+    casenotes_billabletime = models.DecimalField(decimal_places=2, null=True, max_digits=6, db_column='CaseNotes_BillableTime', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'tblcasenotes'
         app_label = ''
 
 class Tblcontact(models.Model):
@@ -124,7 +445,7 @@ class Tblcontacttype(models.Model):
         app_label = ''
 
 class Tblmatters(models.Model):
-    matters_pk = models.ForeignKey('self', primary_key=True, db_column='Matters_PK') # Field name made lowercase.
+    matters_pk = models.IntegerField('self', primary_key=True, db_column='Matters_PK') # Field name made lowercase.
     matters_matterid = models.CharField(max_length=297, db_column='Matters_MatterID', blank=True) # Field name made lowercase.
     matters_clientid1 = models.IntegerField(null=True, db_column='Matters_ClientID1', blank=True) # Field name made lowercase.
     matters_clientid2 = models.IntegerField(null=True, db_column='Matters_ClientID2', blank=True) # Field name made lowercase.
@@ -170,3 +491,128 @@ class Tblmattertype(models.Model):
     class Meta:
         db_table = u'tblmattertype'
         app_label = ''
+
+class Tblpaymentmethods(models.Model):
+    paymentmethods_pk = models.IntegerField(primary_key=True, db_column='PaymentMethods_PK') # Field name made lowercase.
+    paymentmethods_desc = models.CharField(max_length=150, db_column='PaymentMethods_Desc', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'tblpaymentmethods'
+        app_label = ''
+
+class Tblpayments(models.Model):
+    payments_pk = models.IntegerField(primary_key=True, db_column='Payments_PK') # Field name made lowercase.
+    payments_clientpk = models.IntegerField(null=True, db_column='Payments_ClientPK', blank=True) # Field name made lowercase.
+    payments_staffpk = models.IntegerField(null=True, db_column='Payments_StaffPK', blank=True) # Field name made lowercase.
+    payments_receiveddate = models.DateField(null=True, db_column='Payments_ReceivedDate', blank=True) # Field name made lowercase.
+    payments_amount = models.DecimalField(decimal_places=2, null=True, max_digits=12, db_column='Payments_Amount', blank=True) # Field name made lowercase.
+    payments_methodpk = models.IntegerField(null=True, db_column='Payments_MethodPK', blank=True) # Field name made lowercase.
+    payments_matterpk = models.IntegerField(null=True, db_column='Payments_MatterPK', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'tblpayments'
+        app_label = ''
+
+class ViewActivedr(models.Model):
+    contact_firstname = models.CharField(max_length=360, db_column='Contact_FirstName', blank=True) # Field name made lowercase.
+    contact_lastname = models.CharField(max_length=360, db_column='Contact_LastName', blank=True) # Field name made lowercase.
+    matters_matterid = models.CharField(max_length=297, db_column='Matters_MatterID', blank=True) # Field name made lowercase.
+    matters_active = models.TextField(db_column='Matters_Active', blank=True) # Field name made lowercase. This field type is a guess.
+    matters_mattertype = models.IntegerField(null=True, db_column='Matters_MatterType', blank=True) # Field name made lowercase.
+    matters_pk = models.IntegerField(primary_key=True, db_column='Matters_PK') # Field name made lowercase.
+    matters_clientid1 = models.IntegerField(null=True, db_column='Matters_ClientID1', blank=True) # Field name made lowercase.
+    matters_clientid2 = models.IntegerField(null=True, db_column='Matters_ClientID2', blank=True) # Field name made lowercase.
+    contact_pk = models.IntegerField(db_column='Contact_PK') # Field name made lowercase.
+    contact_telephone = models.CharField(max_length=135, db_column='Contact_Telephone', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'view_activedr'
+        app_label = ''
+
+class ViewActivebcy(models.Model):
+    contact_firstname = models.CharField(max_length=360, db_column='Contact_FirstName', blank=True) # Field name made lowercase.
+    contact_lastname = models.CharField(max_length=360, db_column='Contact_LastName', blank=True) # Field name made lowercase.
+    matters_matterid = models.CharField(max_length=297, db_column='Matters_MatterID', blank=True) # Field name made lowercase.
+    matters_active = models.TextField(db_column='Matters_Active', blank=True) # Field name made lowercase. This field type is a guess.
+    matters_mattertype = models.IntegerField(null=True, db_column='Matters_MatterType', blank=True) # Field name made lowercase.
+    matters_pk = models.IntegerField(primary_key=True, db_column='Matters_PK') # Field name made lowercase.
+    matters_clientid1 = models.IntegerField(null=True, db_column='Matters_ClientID1', blank=True) # Field name made lowercase.
+    matters_clientid2 = models.IntegerField(null=True, db_column='Matters_ClientID2', blank=True) # Field name made lowercase.
+    contact_pk = models.IntegerField(db_column='Contact_PK') # Field name made lowercase.
+    contact_telephone = models.CharField(max_length=135, db_column='Contact_Telephone', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'view_activebcy'
+        app_label = ''
+
+class ViewActivecontingency(models.Model):
+    contact_firstname = models.CharField(max_length=360, db_column='Contact_FirstName', blank=True) # Field name made lowercase.
+    contact_lastname = models.CharField(max_length=360, db_column='Contact_LastName', blank=True) # Field name made lowercase.
+    matters_matterid = models.CharField(max_length=297, db_column='Matters_MatterID', blank=True) # Field name made lowercase.
+    matters_active = models.TextField(db_column='Matters_Active', blank=True) # Field name made lowercase. This field type is a guess.
+    matters_mattertype = models.IntegerField(null=True, db_column='Matters_MatterType', blank=True) # Field name made lowercase.
+    matters_pk = models.IntegerField(primary_key=True, db_column='Matters_PK') # Field name made lowercase.
+    matters_clientid1 = models.IntegerField(null=True, db_column='Matters_ClientID1', blank=True) # Field name made lowercase.
+    matters_clientid2 = models.IntegerField(null=True, db_column='Matters_ClientID2', blank=True) # Field name made lowercase.
+    contact_pk = models.IntegerField(db_column='Contact_PK') # Field name made lowercase.
+    contact_telephone = models.CharField(max_length=135, db_column='Contact_Telephone', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'view_activecontingency'
+        app_label = ''
+
+class ViewActiveep(models.Model):
+    contact_firstname = models.CharField(max_length=360, db_column='Contact_FirstName', blank=True) # Field name made lowercase.
+    contact_lastname = models.CharField(max_length=360, db_column='Contact_LastName', blank=True) # Field name made lowercase.
+    matters_matterid = models.CharField(max_length=297, db_column='Matters_MatterID', blank=True) # Field name made lowercase.
+    matters_active = models.TextField(db_column='Matters_Active', blank=True) # Field name made lowercase. This field type is a guess.
+    matters_mattertype = models.IntegerField(null=True, db_column='Matters_MatterType', blank=True) # Field name made lowercase.
+    matters_pk = models.IntegerField(primary_key=True, db_column='Matters_PK') # Field name made lowercase.
+    matters_clientid1 = models.IntegerField(null=True, db_column='Matters_ClientID1', blank=True) # Field name made lowercase.
+    matters_clientid2 = models.IntegerField(null=True, db_column='Matters_ClientID2', blank=True) # Field name made lowercase.
+    contact_pk = models.IntegerField(db_column='Contact_PK') # Field name made lowercase.
+    contact_telephone = models.CharField(max_length=135, db_column='Contact_Telephone', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'view_activeep'
+        app_label = ''
+
+class ViewActiveprobate(models.Model):
+    contact_firstname = models.CharField(max_length=360, db_column='Contact_FirstName', blank=True) # Field name made lowercase.
+    contact_lastname = models.CharField(max_length=360, db_column='Contact_LastName', blank=True) # Field name made lowercase.
+    matters_matterid = models.CharField(max_length=297, db_column='Matters_MatterID', blank=True) # Field name made lowercase.
+    matters_active = models.TextField(db_column='Matters_Active', blank=True) # Field name made lowercase. This field type is a guess.
+    matters_mattertype = models.IntegerField(null=True, db_column='Matters_MatterType', blank=True) # Field name made lowercase.
+    matters_pk = models.IntegerField(primary_key=True, db_column='Matters_PK') # Field name made lowercase.
+    matters_clientid1 = models.IntegerField(null=True, db_column='Matters_ClientID1', blank=True) # Field name made lowercase.
+    matters_clientid2 = models.IntegerField(null=True, db_column='Matters_ClientID2', blank=True) # Field name made lowercase.
+    contact_pk = models.IntegerField(db_column='Contact_PK') # Field name made lowercase.
+    contact_telephone = models.CharField(max_length=135, db_column='Contact_Telephone', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'view_activeprobate'
+        app_label = ''
+
+class ViewActivetransactional(models.Model):
+    contact_firstname = models.CharField(max_length=360, db_column='Contact_FirstName', blank=True) # Field name made lowercase.
+    contact_lastname = models.CharField(max_length=360, db_column='Contact_LastName', blank=True) # Field name made lowercase.
+    matters_matterid = models.CharField(max_length=297, db_column='Matters_MatterID', blank=True) # Field name made lowercase.
+    matters_active = models.TextField(db_column='Matters_Active', blank=True) # Field name made lowercase. This field type is a guess.
+    matters_mattertype = models.IntegerField(null=True, db_column='Matters_MatterType', blank=True) # Field name made lowercase.
+    matters_pk = models.IntegerField(primary_key=True, db_column='Matters_PK') # Field name made lowercase.
+    matters_clientid1 = models.IntegerField(null=True, db_column='Matters_ClientID1', blank=True) # Field name made lowercase.
+    matters_clientid2 = models.IntegerField(null=True, db_column='Matters_ClientID2', blank=True) # Field name made lowercase.
+    contact_pk = models.IntegerField(db_column='Contact_PK') # Field name made lowercase.
+    contact_telephone = models.CharField(max_length=135, db_column='Contact_Telephone', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'view_activetransactional'
+        app_label = ''
+
+class ViewActivecivil(models.Model):
+    contact_firstname = models.CharField(max_length=360, db_column='Contact_FirstName', blank=True) # Field name made lowercase.
+    contact_lastname = models.CharField(max_length=360, db_column='Contact_LastName', blank=True) # Field name made lowercase.
+    matters_matterid = models.CharField(max_length=297, db_column='Matters_MatterID', blank=True) # Field name made lowercase.
+    matters_active = models.TextField(db_column='Matters_Active', blank=True) # Field name made lowercase. This field type is a guess.
+    matters_mattertype = models.IntegerField(null=True, db_column='Matters_MatterType', blank=True) # Field name made lowercase.
+    matters_pk = models.IntegerField(primary_key=True, db_column='Matters_PK') # Field name made lowercase.
+    matters_clientid1 = models.IntegerField(null=True, db_column='Matters_ClientID1', blank=True) # Field name made lowercase.
+    matters_clientid2 = models.IntegerField(null=True, db_column='Matters_ClientID2', blank=True) # Field name made lowercase.
+    contact_pk = models.IntegerField(db_column='Contact_PK') # Field name made lowercase.
+    contact_telephone = models.CharField(max_length=135, db_column='Contact_Telephone', blank=True) # Field name made lowercase.
+    class Meta:
+        db_table = u'view_activecivil'
+        app_label = ''
+
